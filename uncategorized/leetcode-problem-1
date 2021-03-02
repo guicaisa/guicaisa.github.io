@@ -105,7 +105,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://guicaisa.github.io/uncategorized/leetcode-problem-1" data-id="cklqmxgwp000134vd94oj3g9q" class="article-share-link">Share</a>
+      <a data-url="https://guicaisa.github.io/uncategorized/leetcode-problem-1" data-id="ckls56shm000138vdfhtm7nka" class="article-share-link">Share</a>
       
       
     </footer>
@@ -161,6 +161,10 @@
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/uncategorized/leetcode-problem-3">leetcode problem 3. Longest Substring Without Repeating Characters</a>
+          </li>
         
           <li>
             <a href="/uncategorized/leetcode-problem-2">leetcode problem 2. Add Two Numbers</a>

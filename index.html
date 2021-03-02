@@ -64,6 +64,63 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-leetcode-problem-3" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/uncategorized/leetcode-problem-3" class="article-date">
+  <time datetime="2021-03-02T14:50:33.000Z" itemprop="datePublished">2021-03-02</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/uncategorized/leetcode-problem-3">leetcode problem 3. Longest Substring Without Repeating Characters</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="leetcode-problem-3-Longest-Substring-Without-Repeating-Characters"><a href="#leetcode-problem-3-Longest-Substring-Without-Repeating-Characters" class="headerlink" title="leetcode problem 3. Longest Substring Without Repeating Characters"></a><center>leetcode problem 3. Longest Substring Without Repeating Characters</center></h1><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><h3 id="3-Longest-Substring-Without-Repeating-Characters"><a href="#3-Longest-Substring-Without-Repeating-Characters" class="headerlink" title="3. Longest Substring Without Repeating Characters"></a>3. Longest Substring Without Repeating Characters</h3><p>Given a string s, find the length of the longest substring without repeating characters.</p>
+<p>Example 1:</p>
+<p>Input: s = “abcabcbb”<br>Output: 3<br>Explanation: The answer is “abc”, with the length of 3.<br>Example 2:</p>
+<p>Input: s = “bbbbb”<br>Output: 1<br>Explanation: The answer is “b”, with the length of 1.<br>Example 3:</p>
+<p>Input: s = “pwwkew”<br>Output: 3<br>Explanation: The answer is “wke”, with the length of 3.<br>Notice that the answer must be a substring, “pwke” is a subsequence and not a substring.<br>Example 4:</p>
+<p>Input: s = “”<br>Output: 0</p>
+<p>Constraints:</p>
+<p>0 &lt;= s.length &lt;= 5 * 104<br>s consists of English letters, digits, symbols and spaces.</p>
+<h2 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h2><h3 id="1"><a href="#1" class="headerlink" title="1."></a>1.</h3><p>暴力求解，遍历所有可能出现的子串，低效。</p>
+<h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">int</span> <span class="title">LengthOfLongestSubstring</span><span class="params">(<span class="keyword">const</span> <span class="built_in">std</span>::<span class="built_in">string</span>&amp; s)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">if</span> (s == <span class="string">&quot;&quot;</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="built_in">std</span>::<span class="built_in">unordered_map</span>&lt;<span class="keyword">char</span>, <span class="keyword">int</span>&gt; char_to_index;</span><br><span class="line">		<span class="keyword">int</span> max_length = <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; s.size(); )</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span> (char_to_index.find(s[i]) == char_to_index.end())</span><br><span class="line">			&#123;</span><br><span class="line">				char_to_index[s[i]] = i;</span><br><span class="line">				++i;</span><br><span class="line"></span><br><span class="line">				<span class="keyword">if</span> (i == s.size())</span><br><span class="line">				&#123;</span><br><span class="line">					max_length = char_to_index.size() &gt; max_length ? char_to_index.size() : max_length;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">else</span></span><br><span class="line">			&#123;</span><br><span class="line">				<span class="keyword">if</span> (char_to_index.size() &gt; <span class="number">1</span>)</span><br><span class="line">				&#123;</span><br><span class="line">					max_length = char_to_index.size() &gt; max_length ? char_to_index.size() : max_length;</span><br><span class="line">					i = char_to_index[s[i]] + <span class="number">1</span>;</span><br><span class="line">					char_to_index.clear();</span><br><span class="line">				&#125;</span><br><span class="line">				<span class="keyword">else</span></span><br><span class="line">				&#123;</span><br><span class="line">					char_to_index[s[i]] = i;</span><br><span class="line">					++i;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">return</span> max_length;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h3 id="2"><a href="#2" class="headerlink" title="2."></a>2.</h3><p>使用滑动窗口的方式维持一个不包含重复字符的索引集合，在右边界往右遍历的过程中遇到不重复的字符就进行添加，更新最大子串长度，如果遇到已经出现的重复字符，将左侧边界不停右移，直到去掉重复字符为止。</p>
+<h4 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">int</span> <span class="title">LengthOfLongestSubstring</span><span class="params">(<span class="keyword">const</span> <span class="built_in">std</span>::<span class="built_in">string</span>&amp; s)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="built_in">std</span>::<span class="built_in">unordered_set</span>&lt;<span class="keyword">int</span>&gt; char_set;</span><br><span class="line">		<span class="keyword">int</span> max_length = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>, j = <span class="number">0</span>; i &lt; s.size() &amp;&amp; j &lt; s.size(); )</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span> (char_set.find(s[j]) == char_set.end())</span><br><span class="line">			&#123;</span><br><span class="line">				char_set.insert(s[j++]);</span><br><span class="line">				max_length = char_set.size() &gt; max_length ? char_set.size() : max_length;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">else</span></span><br><span class="line">			&#123;</span><br><span class="line">				char_set.erase(s[i++]);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">return</span> max_length;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">&#125;;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<h3 id="3"><a href="#3" class="headerlink" title="3."></a>3.</h3><p>滑动窗口的更简易方式，在右边界向右扩展碰到重复的字符时，直接将左边界定位到该字符第一次出现的位置的后一位，省去上一种方法中的多步操作。</p>
+<h4 id="代码-2"><a href="#代码-2" class="headerlink" title="代码"></a>代码</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">int</span> <span class="title">LengthOfLongestSubstring</span><span class="params">(<span class="keyword">const</span> <span class="built_in">std</span>::<span class="built_in">string</span>&amp; s)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="built_in">std</span>::<span class="built_in">unordered_map</span>&lt;<span class="keyword">char</span>, <span class="keyword">int</span>&gt; char_to_index;</span><br><span class="line">		<span class="keyword">int</span> max_length = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>, j = <span class="number">0</span>; i &lt; s.size() &amp;&amp; j &lt; s.size(); ++j)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span> (char_to_index.find(s[j]) != char_to_index.end())</span><br><span class="line">			&#123;</span><br><span class="line">				<span class="comment">// 重复字符上一次出现位置的后一个索引位置</span></span><br><span class="line">				<span class="comment">// 这里的new_index必定小于j，所以不用进行边界判断</span></span><br><span class="line">				<span class="keyword">int</span> nex_index = char_to_index[s[j]] + <span class="number">1</span>;</span><br><span class="line">				i = nex_index &gt; i ? nex_index : i;</span><br><span class="line">			&#125;</span><br><span class="line"></span><br><span class="line">			char_to_index[s[j]] = j;</span><br><span class="line">			<span class="keyword">int</span> new_length = j - i + <span class="number">1</span>;</span><br><span class="line">			max_length = new_length &gt; max_length ? new_length : max_length;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">return</span> max_length;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="4"><a href="#4" class="headerlink" title="4."></a>4.</h3><p>由于题目中定义字符串只包含英文字母，数字，符号和空格，ascii中最多只有256个字符，使用256维度的数组代替map，原理与滑动窗口相同，更加简化。</p>
+<h4 id="代码-3"><a href="#代码-3" class="headerlink" title="代码"></a>代码</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">int</span> <span class="title">LengthOfLongestSubstring</span><span class="params">(<span class="keyword">const</span> <span class="built_in">std</span>::<span class="built_in">string</span>&amp; s)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="function"><span class="built_in">std</span>::<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; <span class="title">char_to_index</span><span class="params">(<span class="number">256</span>, <span class="number">-1</span>)</span></span>;</span><br><span class="line">		<span class="keyword">int</span> start = <span class="number">-1</span>;</span><br><span class="line">		<span class="keyword">int</span> max_length = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; s.size(); ++i)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span> (char_to_index[s[i]] &gt; start)</span><br><span class="line">			&#123;</span><br><span class="line">				start = char_to_index[s[i]];</span><br><span class="line">			&#125;</span><br><span class="line"></span><br><span class="line">			<span class="comment">// 这里计算长度的时候使用的时候没有 + 1</span></span><br><span class="line">			<span class="comment">// 所以左边界索引不需要定位到重复字符第一次出现的位置之后</span></span><br><span class="line">			<span class="comment">// 直接定位在重复字符第一次出现的位置上即可，左边是开区间，不统计到长度内</span></span><br><span class="line">			<span class="keyword">int</span> new_length = i - start;</span><br><span class="line">			max_length = new_length &gt; max_length ? new_length : max_length;</span><br><span class="line">			char_to_index[s[i]] = i;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">return</span> max_length;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">&#125;;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://guicaisa.github.io/uncategorized/leetcode-problem-3" data-id="ckls56shw000338vd0q8k17j4" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-leetcode-problem-2" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/uncategorized/leetcode-problem-2" class="article-date">
@@ -89,7 +146,7 @@
         <h1 id="leetcode-problem-2-Add-Two-Numbers"><a href="#leetcode-problem-2-Add-Two-Numbers" class="headerlink" title="leetcode problem 2. Add Two Numbers"></a><center>leetcode problem 2. Add Two Numbers</center></h1><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><h3 id="2-Add-Two-Numbers"><a href="#2-Add-Two-Numbers" class="headerlink" title="2. Add Two Numbers"></a>2. Add Two Numbers</h3><p>You are given two non-empty linked lists representing two non-negative integers. The digits are stored in reverse order, and each of their nodes contains a single digit. Add the two numbers and return the sum as a linked list.</p>
 <p>You may assume the two numbers do not contain any leading zero, except the number 0 itself.</p>
 <p>Example 1:</p>
-<p><img src="/.io//addtwonumber1.jpg" alt="例子"></p>
+<p><img src="/.io//addtwonumber1.jpg" alt="图片"></p>
 <p>Input: l1 = [2,4,3], l2 = [5,6,4]<br>Output: [7,0,8]<br>Explanation: 342 + 465 = 807.<br>Example 2:</p>
 <p>Input: l1 = [0], l2 = [0]<br>Output: [0]<br>Example 3:</p>
 <p>Input: l1 = [9,9,9,9,9,9,9], l2 = [9,9,9,9]<br>Output: [8,9,9,9,0,0,0,1]</p>
@@ -103,7 +160,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://guicaisa.github.io/uncategorized/leetcode-problem-2" data-id="cklqmxgwr000234vd3um321wg" class="article-share-link">Share</a>
+      <a data-url="https://guicaisa.github.io/uncategorized/leetcode-problem-2" data-id="ckls56sho000238vdb2yzf4f8" class="article-share-link">Share</a>
       
       
     </footer>
@@ -152,7 +209,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://guicaisa.github.io/uncategorized/leetcode-problem-1" data-id="cklqmxgwp000134vd94oj3g9q" class="article-share-link">Share</a>
+      <a data-url="https://guicaisa.github.io/uncategorized/leetcode-problem-1" data-id="ckls56shm000138vdfhtm7nka" class="article-share-link">Share</a>
       
       
     </footer>
@@ -201,7 +258,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://guicaisa.github.io/uncategorized/hello-world" data-id="cklqmxgwj000034vd2aqkax6d" class="article-share-link">Share</a>
+      <a data-url="https://guicaisa.github.io/uncategorized/hello-world" data-id="ckls56shh000038vdcuq7610w" class="article-share-link">Share</a>
       
       
     </footer>
@@ -240,6 +297,10 @@
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/uncategorized/leetcode-problem-3">leetcode problem 3. Longest Substring Without Repeating Characters</a>
+          </li>
         
           <li>
             <a href="/uncategorized/leetcode-problem-2">leetcode problem 2. Add Two Numbers</a>
