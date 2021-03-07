@@ -20,17 +20,21 @@
     var CONFIG = {"hostname":"guicaisa.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="leetcode problem 4. Median of Two Sorted Arrays题目描述4. Median of Two Sorted ArraysGiven two sorted arrays nums1 and nums2 of size m and n respectively, return the median of the two sorted arrays. Examp">
+  <meta name="description" content="leetcode problem 4. 寻找两个正序数组的中位数链接https:&#x2F;&#x2F;leetcode-cn.com&#x2F;problems&#x2F;median-of-two-sorted-arrays&#x2F; 题目描述给定两个大小分别为 m 和 n 的正序（从小到大）数组 nums1 和 nums2。请你找出并返回这两个正序数组的 中位数 。 示例 1： 输入：nums1 &#x3D; [1,3], nums2 &#x3D; [2]输">
 <meta property="og:type" content="article">
-<meta property="og:title" content="leetcode problem 4. Median of Two Sorted Arrays">
+<meta property="og:title" content="leetcode problem 4. 寻找两个正序数组的中位数">
 <meta property="og:url" content="https://guicaisa.github.io/posts/94c6bf9.html">
 <meta property="og:site_name" content="Ciao">
-<meta property="og:description" content="leetcode problem 4. Median of Two Sorted Arrays题目描述4. Median of Two Sorted ArraysGiven two sorted arrays nums1 and nums2 of size m and n respectively, return the median of the two sorted arrays. Examp">
+<meta property="og:description" content="leetcode problem 4. 寻找两个正序数组的中位数链接https:&#x2F;&#x2F;leetcode-cn.com&#x2F;problems&#x2F;median-of-two-sorted-arrays&#x2F; 题目描述给定两个大小分别为 m 和 n 的正序（从小到大）数组 nums1 和 nums2。请你找出并返回这两个正序数组的 中位数 。 示例 1： 输入：nums1 &#x3D; [1,3], nums2 &#x3D; [2]输">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://guicaisa.github.io/posts/94c6bf9/p4_1.jpg">
+<meta property="og:image" content="https://guicaisa.github.io/posts/94c6bf9/p4_2.jpg">
 <meta property="article:published_time" content="2021-03-04T15:48:14.000Z">
-<meta property="article:modified_time" content="2021-03-06T08:33:18.969Z">
+<meta property="article:modified_time" content="2021-03-07T06:30:18.539Z">
 <meta property="article:author" content="ciao">
+<meta property="article:tag" content="算法">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://guicaisa.github.io/posts/94c6bf9/p4_1.jpg">
 
 <link rel="canonical" href="https://guicaisa.github.io/posts/94c6bf9.html">
 
@@ -45,7 +49,7 @@
   };
 </script>
 
-  <title>leetcode problem 4. Median of Two Sorted Arrays | Ciao</title>
+  <title>leetcode problem 4. 寻找两个正序数组的中位数 | Ciao</title>
   
 
 
@@ -178,7 +182,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          leetcode problem 4. Median of Two Sorted Arrays
+          leetcode problem 4. 寻找两个正序数组的中位数
         </h1>
 
         <div class="post-meta">
@@ -195,8 +199,17 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-03-06 16:33:18" itemprop="dateModified" datetime="2021-03-06T16:33:18+08:00">2021-03-06</time>
+                <time title="修改时间：2021-03-07 14:30:18" itemprop="dateModified" datetime="2021-03-07T14:30:18+08:00">2021-03-07</time>
               </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/leetcode/" itemprop="url" rel="index"><span itemprop="name">leetcode</span></a>
+                </span>
+            </span>
 
           
 
@@ -209,33 +222,36 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="leetcode-problem-4-Median-of-Two-Sorted-Arrays"><a href="#leetcode-problem-4-Median-of-Two-Sorted-Arrays" class="headerlink" title="leetcode problem 4. Median of Two Sorted Arrays"></a><center>leetcode problem 4. Median of Two Sorted Arrays</center></h1><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><h3 id="4-Median-of-Two-Sorted-Arrays"><a href="#4-Median-of-Two-Sorted-Arrays" class="headerlink" title="4. Median of Two Sorted Arrays"></a>4. Median of Two Sorted Arrays</h3><p>Given two sorted arrays <code>nums1</code> and <code>nums2</code> of size <code>m</code> and <code>n</code> respectively, return <strong>the median</strong> of the two sorted arrays.</p>
-<p><strong>Example 1:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: nums1 &#x3D; [1,3], nums2 &#x3D; [2]</span><br><span class="line">Output: 2.00000</span><br><span class="line">Explanation: merged array &#x3D; [1,2,3] and median is 2.</span><br></pre></td></tr></table></figure>
+        <h1 id="leetcode-problem-4-寻找两个正序数组的中位数"><a href="#leetcode-problem-4-寻找两个正序数组的中位数" class="headerlink" title="leetcode problem 4. 寻找两个正序数组的中位数"></a><center>leetcode problem 4. 寻找两个正序数组的中位数</center></h1><h2 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h2><p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/median-of-two-sorted-arrays/">https://leetcode-cn.com/problems/median-of-two-sorted-arrays/</a></p>
+<h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>给定两个大小分别为 m 和 n 的正序（从小到大）数组 nums1 和 nums2。请你找出并返回这两个正序数组的 中位数 。</p>
+<p>示例 1：</p>
+<p>输入：nums1 = [1,3], nums2 = [2]<br>输出：2.00000<br>解释：合并数组 = [1,2,3] ，中位数 2<br>示例 2：</p>
+<p>输入：nums1 = [1,2], nums2 = [3,4]<br>输出：2.50000<br>解释：合并数组 = [1,2,3,4] ，中位数 (2 + 3) / 2 = 2.5<br>示例 3：</p>
+<p>输入：nums1 = [0,0], nums2 = [0,0]<br>输出：0.00000<br>示例 4：</p>
+<p>输入：nums1 = [], nums2 = [1]<br>输出：1.00000<br>示例 5：</p>
+<p>输入：nums1 = [2], nums2 = []<br>输出：2.00000</p>
+<p>提示：</p>
+<p>nums1.length == m<br>nums2.length == n<br>0 &lt;= m &lt;= 1000<br>0 &lt;= n &lt;= 1000<br>1 &lt;= m + n &lt;= 2000<br>-106 &lt;= nums1[i], nums2[i] &lt;= 106</p>
+<p>进阶：你能设计一个时间复杂度为 O(log (m+n)) 的算法解决此问题吗？</p>
+<h2 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h2><h3 id="1"><a href="#1" class="headerlink" title="1."></a>1.</h3><p>根据2个数组的长度算出中间值的索引，以升序分别从2个数组中取值，递增索引，直到找到中间值。</p>
+<h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">double</span> <span class="title">FindMedianSortedArrays</span><span class="params">(<span class="keyword">const</span> <span class="built_in">std</span>::<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums1, <span class="keyword">const</span> <span class="built_in">std</span>::<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums2)</span> </span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> even_flag = (nums1.size() + nums2.size()) % <span class="number">2</span> == <span class="number">0</span> ? <span class="number">1</span> : <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> previous_num = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> current_num = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> middle_index = (nums1.size() + nums2.size()) / <span class="number">2</span>;</span><br><span class="line">        <span class="keyword">int</span> index = <span class="number">-1</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">size_t</span> i = <span class="number">0</span>, j = <span class="number">0</span>; ; )</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span> (i &lt; nums1.size() &amp;&amp; j &lt; nums2.size())</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">if</span> (nums1[i] &lt; nums2[j])</span><br><span class="line">                &#123;</span><br><span class="line">                    current_num = nums1[i++];</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">else</span></span><br><span class="line">                &#123;</span><br><span class="line">                    current_num = nums2[j++];</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (i &lt; nums1.size())</span><br><span class="line">            &#123;</span><br><span class="line">                current_num = nums1[i++];</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (j &lt; nums2.size())</span><br><span class="line">            &#123;</span><br><span class="line">                current_num = nums2[j++];</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (++index == middle_index)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">return</span> even_flag == <span class="number">1</span> ? (previous_num + current_num) / <span class="number">2.0f</span> : current_num;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            previous_num = current_num;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
-<p><strong>Example 2:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: nums1 &#x3D; [1,2], nums2 &#x3D; [3,4]</span><br><span class="line">Output: 2.50000</span><br><span class="line">Explanation: merged array &#x3D; [1,2,3,4] and median is (2 + 3) &#x2F; 2 &#x3D; 2.5.</span><br></pre></td></tr></table></figure>
+<h3 id="2"><a href="#2" class="headerlink" title="2."></a>2.</h3><p>假设有2个已经排序好的数组A，B长度分别为m，n，如果将这两个数组合并在一起，升序排列后得到新的数组，一定可以平均分成两部分(如果总长度为奇数那么中间就会多一个数)，这时候可以很轻松的判断出中位数是什么，如果长度为偶数，中位数=(左边最大数 + 右边最小数) / 2，如果长度为奇数那中位数就是最中间的那个数。</p>
+<p>这时候就一定会有两个分割点索引i，j，将数组A和B分别从i，j的位置分成左右两个部分。A左 + B左构成新数组的左半部分，A右 + B右构成新数组的右半部分，如果A和B的总长度为偶数的画，这两部分长度相同，如果为奇数的话，就让左边的长度比右边多1(这样方便后面的计算)。在进行了这样的拆分之后，可以保证A左和B左中的任意一个数必定 &lt;= A右和B右中的任意一个数，即A[i - 1] &lt;= B[j] &amp;&amp; B[j - 1] &lt;= A[i]，因为数组都是升序排列的，所以这个判断条件肯定是A左中的最大值 &lt;= B右中的最小值，B左中的最大值 &lt;= A右中的最小值，举例：</p>
+<p><img src="/posts/94c6bf9/p4_1.jpg" alt="p4_1"></p>
+<p>先合并排成新数组</p>
+<p><img src="/posts/94c6bf9/p4_2.jpg" alt="p4_2"></p>
+<p>很明显的可以看到，中位数在5和6之间，即为5.5，A左为1，4，5，A右为9，11，i为3，B左为2，3，B右为6，8，10，j为2。并且满足上述条件A[i - 1] &lt;= B[j] &amp;&amp; B[j - 1] &lt;= A[i]，在这里就是A[2] = 5 &lt;= B[2] = 6，B[1] = 3 &lt;= A[3] = 9，奇数的情况也是类似，不过左半部分会多出一个值。</p>
+<p>由此结论可以推导出一个公式 i + j = m - i + n - j，如果m + n为奇数，这里等式右边需要+1，因为i + j可以理解为合并后的数组左半边的个数，m - i + n - j可以理解为合并后的数组右半边的个数，奇数的情况我们让左半边多了一个数，所以这里需要+1。由此可以得出求j的公式，j = (m + n + 1) / 2 - i，其中的+1是为了可以同时处理偶数和奇数的情况。这个公式有一个要求，m &lt;= n，即数组A为长度较小的那一个，因为 0 &lt;= i &lt; m，如果 m &gt; n，可能会导致j为负数。之后就可以对数组A(长度较小的)进行二分查找了，找到合适的i，并通过公式得到相应的j，根据结果推断下一次二分查找的方向或者是得到最终的结果，二分查找只会遇到三种情况:</p>
+<p>1: (i == 0 || j == n || A[i - 1] &lt;= B[j]) &amp;&amp; (j == 0 || i == m || B[j - 1] &lt;= A[i])，A左的最大值小于等于B右的最小值，B左的最大值小于等于A右的最小值，表示找到了正确结果，考虑到边界情况可能遇到i - 1，i，j - 1，j的索引值无效，需要加上额外判断条件。</p>
+<p>2: i &gt; 0 &amp;&amp; j &lt; n &amp;&amp; A[i - 1] &gt; B[j]，当前i的值过大，i需要向左移动，找到更小的值(数组是升序排列的)，根据求j公式相应的j会更大，找到更大的值，将下一次二分查找的区间定位到左半区，同样需要考虑边界。</p>
+<p>3: j &gt; 0 &amp;&amp; i &lt; m &amp;&amp; B[j - 1] &gt; A[i]，当前i的值过小，i需要向右移动，找到更大的值，根据求j公式相应的j会更小，找到更小的值，将下一次二分查找的区间定位到右半区，同样需要考虑边界。</p>
+<p>不断进行二分查找，直到找到结果或者循环结束，得到相应的i，j，如果m + n为奇数，则中位数为max(A[i - 1]，B[j - 1])，此时也需要注意边界，如果i == 0或j == 0则要取另外一个值。如果m + n为偶数，则取max(A[i - 1], B[j - 1]) + min(A[i]，B[j]) / 2，同样如果有边界问题的话，取另一个值。</p>
+<h4 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">double</span> <span class="title">FindMedianSortedArrays</span><span class="params">(<span class="keyword">const</span> <span class="built_in">std</span>::<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums1, <span class="keyword">const</span> <span class="built_in">std</span>::<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums2)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (nums1.size() &gt; nums2.size())</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">return</span> FindMedianSortedArraysBinarySerach(nums2, nums1);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span> len1 = nums1.size();</span><br><span class="line">        <span class="keyword">int</span> len2 = nums2.size();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span> low = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> high = len1;</span><br><span class="line">        <span class="keyword">int</span> i = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> j = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> (low &lt;= high)</span><br><span class="line">        &#123;</span><br><span class="line">            i = (low + high) / <span class="number">2</span>;</span><br><span class="line">            j = (len1 + len2 + <span class="number">1</span>) / <span class="number">2</span> - i;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> ((i == <span class="number">0</span> || j == len2 || nums1[i - <span class="number">1</span>] &lt;= nums2[j]) &amp;&amp;</span><br><span class="line">                (i == len1 || j == <span class="number">0</span> || nums2[j - <span class="number">1</span>] &lt;= nums1[i]))</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (i &gt; <span class="number">0</span> &amp;&amp; j &lt; len2 &amp;&amp; nums1[i - <span class="number">1</span>] &gt; nums2[j])</span><br><span class="line">            &#123;</span><br><span class="line">                high = i - <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (j &gt; <span class="number">0</span> &amp;&amp; i &lt; len1 &amp;&amp; nums2[j - <span class="number">1</span>] &gt; nums1[i])</span><br><span class="line">            &#123;</span><br><span class="line">                low = i + <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span> left_max = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">if</span> (i == <span class="number">0</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            left_max = nums2[j - <span class="number">1</span>];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (j == <span class="number">0</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            left_max = nums1[i - <span class="number">1</span>];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            left_max = <span class="built_in">std</span>::max(nums1[i - <span class="number">1</span>], nums2[j - <span class="number">1</span>]);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> ((len1 + len2) % <span class="number">2</span> == <span class="number">1</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">return</span> left_max;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span> right_min = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">if</span> (i == len1)</span><br><span class="line">        &#123;</span><br><span class="line">            right_min = nums2[j];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (j == len2)</span><br><span class="line">        &#123;</span><br><span class="line">            right_min = nums1[i];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            right_min = <span class="built_in">std</span>::min(nums1[i], nums2[j]);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> (left_max + right_min) / <span class="number">2.0f</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
-<p><strong>Example 3:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: nums1 &#x3D; [0,0], nums2 &#x3D; [0,0]</span><br><span class="line">Output: 0.00000</span><br></pre></td></tr></table></figure>
 
-<p><strong>Example 4:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: nums1 &#x3D; [], nums2 &#x3D; [1]</span><br><span class="line">Output: 1.00000</span><br></pre></td></tr></table></figure>
 
-<p><strong>Example 5:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: nums1 &#x3D; [2], nums2 &#x3D; []</span><br><span class="line">Output: 2.00000</span><br></pre></td></tr></table></figure>
 
-<p><strong>Constraints:</strong></p>
-<ul>
-<li><code>nums1.length == m</code></li>
-<li><code>nums2.length == n</code></li>
-<li><code>0 &lt;= m &lt;= 1000</code></li>
-<li><code>0 &lt;= n &lt;= 1000</code></li>
-<li><code>1 &lt;= m + n &lt;= 2000</code></li>
-<li><code>-106 &lt;= nums1[i], nums2[i] &lt;= 106</code></li>
-</ul>
-<p><strong>Follow up:</strong> The overall run time complexity should be <code>O(log (m+n))</code>.</p>
-<h2 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h2>
     </div>
 
     
@@ -243,6 +259,9 @@
     
 
       <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E7%AE%97%E6%B3%95/" rel="tag"># 算法</a>
+          </div>
 
         
 
@@ -253,7 +272,10 @@
     <a href="/posts/2a072336.html" rel="prev" title="leetcode problem 3. 无重复字符的最长子串">
       <i class="fa fa-chevron-left"></i> leetcode problem 3. 无重复字符的最长子串
     </a></div>
-      <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/posts/f7952bbd.html" rel="next" title="leetcode problem 5. 最长回文子串">
+      leetcode problem 5. 最长回文子串 <i class="fa fa-chevron-right"></i>
+    </a></div>
     </div>
       </footer>
     
@@ -312,7 +334,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#leetcode-problem-4-Median-of-Two-Sorted-Arrays"><span class="nav-number">1.</span> <span class="nav-text">leetcode problem 4. Median of Two Sorted Arrays</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0"><span class="nav-number">1.1.</span> <span class="nav-text">题目描述</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-Median-of-Two-Sorted-Arrays"><span class="nav-number">1.1.1.</span> <span class="nav-text">4. Median of Two Sorted Arrays</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A7%A3%E6%B3%95"><span class="nav-number">1.2.</span> <span class="nav-text">解法</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#leetcode-problem-4-%E5%AF%BB%E6%89%BE%E4%B8%A4%E4%B8%AA%E6%AD%A3%E5%BA%8F%E6%95%B0%E7%BB%84%E7%9A%84%E4%B8%AD%E4%BD%8D%E6%95%B0"><span class="nav-number">1.</span> <span class="nav-text">leetcode problem 4. 寻找两个正序数组的中位数</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%93%BE%E6%8E%A5"><span class="nav-number">1.1.</span> <span class="nav-text">链接</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0"><span class="nav-number">1.2.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A7%A3%E6%B3%95"><span class="nav-number">1.3.</span> <span class="nav-text">解法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1"><span class="nav-number">1.3.1.</span> <span class="nav-text">1.</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81"><span class="nav-number">1.3.1.1.</span> <span class="nav-text">代码</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2"><span class="nav-number">1.3.2.</span> <span class="nav-text">2.</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81-1"><span class="nav-number">1.3.2.1.</span> <span class="nav-text">代码</span></a></li></ol></li></ol></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -326,7 +348,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">4</span>
+          <span class="site-state-item-count">5</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
