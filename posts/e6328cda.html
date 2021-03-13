@@ -28,7 +28,7 @@
 <meta property="og:description" content="leetcode problem 1. 两数之和链接https:&#x2F;&#x2F;leetcode-cn.com&#x2F;problems&#x2F;two-sum&#x2F; 题目描述给定一个整数数组 nums 和一个整数目标值 target，请你在该数组中找出 和为目标值 的那 两个 整数，并返回它们的数组下标。 你可以假设每种输入只会对应一个答案。但是，数组中同一个元素不能使用两遍。 你可以按任意顺序返回答案。 示例 1： 输入：n">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-02-28T10:57:45.000Z">
-<meta property="article:modified_time" content="2021-03-07T04:44:08.138Z">
+<meta property="article:modified_time" content="2021-03-13T06:23:44.945Z">
 <meta property="article:author" content="ciao">
 <meta property="article:tag" content="算法">
 <meta name="twitter:card" content="summary">
@@ -196,7 +196,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-03-07 12:44:08" itemprop="dateModified" datetime="2021-03-07T12:44:08+08:00">2021-03-07</time>
+                <time title="修改时间：2021-03-13 14:23:44" itemprop="dateModified" datetime="2021-03-13T14:23:44+08:00">2021-03-13</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -205,6 +205,10 @@
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/leetcode/" itemprop="url" rel="index"><span itemprop="name">leetcode</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/leetcode/leetcode-0001-0050/" itemprop="url" rel="index"><span itemprop="name">leetcode 0001-0050</span></a>
                 </span>
             </span>
 
@@ -229,7 +233,7 @@
 <p>输入：nums = [3,3], target = 6<br>输出：[0,1]</p>
 <p>提示：</p>
 <p>2 &lt;= nums.length &lt;= 103<br>-109 &lt;= nums[i] &lt;= 109<br>-109 &lt;= target &lt;= 109<br>只会存在一个有效答案</p>
-<h2 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h2><h3 id="1"><a href="#1" class="headerlink" title="1."></a>1.</h3><p>第一次遍历，保存数组中的数字对应的下标到map中。第二次遍历，判断目标值与当前值的差是否在map中，获得其下标，下标不能相同，满足条件即可得出结果。</p>
+<h2 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h2><h3 id="1"><a href="#1" class="headerlink" title="1."></a>1.</h3><p>第一次遍历，保存数组中的数字对应的下标到map中。第二次遍历，判断目标值与当前值的差是否在map中，获得其下标，获取的下标不能与当前正在遍历的下标相同，因为同一个元素不能使用两次。最后满足条件即可得出结果。</p>
 <h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="built_in">std</span>::<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; <span class="title">TwoSum</span><span class="params">(<span class="keyword">const</span> <span class="built_in">std</span>::<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums, <span class="keyword">const</span> <span class="keyword">int</span> target)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="built_in">std</span>::<span class="built_in">map</span>&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt; number_to_index;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">size_t</span> i = <span class="number">0</span>; i &lt; nums.size(); ++i)</span><br><span class="line">        &#123;</span><br><span class="line">            number_to_index[nums[i]] = i;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">size_t</span> i = <span class="number">0</span>; i &lt; nums.size(); ++i)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">int</span> differ = target - nums[i];</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (number_to_index.find(differ) != number_to_index.end() &amp;&amp; i != number_to_index[differ])</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="built_in">std</span>::<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; result;</span><br><span class="line">                result.emplace_back(number_to_index[differ]);</span><br><span class="line">                result.emplace_back(i);</span><br><span class="line">                sort(result.begin(), result.end());</span><br><span class="line"></span><br><span class="line">                <span class="keyword">return</span> result;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">std</span>::<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;(<span class="number">0</span>, <span class="number">0</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
 <h3 id="2"><a href="#2" class="headerlink" title="2."></a>2.</h3><p>只需遍历一次，保存数组中出现的数字对应的下标到map中，但是每次遍历时，检查map中是否有与当前值组合后符合目标值的数，由于题目描述已经确定只有一种解，找到匹配的结果直接返回即可。</p>
@@ -334,7 +338,7 @@
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-count">2</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
