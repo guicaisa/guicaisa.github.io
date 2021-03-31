@@ -160,7 +160,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://guicaisa.github.io/posts/d4fb0053.html">
+    <link itemprop="mainEntityOfPage" href="https://guicaisa.github.io/posts/79715a0f.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -174,7 +174,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/posts/d4fb0053.html" class="post-title-link" itemprop="url">leetcode problem 13. 罗马数字转整数</a>
+            <a href="/posts/79715a0f.html" class="post-title-link" itemprop="url">leetcode problem 14. 最长公共前缀</a>
         </h2>
 
         <div class="post-meta">
@@ -185,7 +185,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2021-03-27 18:48:23 / 修改时间：18:53:01" itemprop="dateCreated datePublished" datetime="2021-03-27T18:48:23+08:00">2021-03-27</time>
+              <time title="创建时间：2021-03-31 22:12:00 / 修改时间：22:53:55" itemprop="dateCreated datePublished" datetime="2021-03-31T22:12:00+08:00">2021-03-31</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -212,7 +212,105 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="leetcode-problem-13-罗马数字转整数"><a href="#leetcode-problem-13-罗马数字转整数" class="headerlink" title=" leetcode problem 13. 罗马数字转整数"></a><center> leetcode problem 13. 罗马数字转整数</center></h1><h2 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h2><p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/roman-to-integer/">https://leetcode-cn.com/problems/roman-to-integer/</a></p>
+          <h1 id="leetcode-problem-14-最长公共前缀"><a href="#leetcode-problem-14-最长公共前缀" class="headerlink" title="leetcode problem 14. 最长公共前缀"></a><center>leetcode problem 14. 最长公共前缀</center></h1><h2 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h2><p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/longest-common-prefix/">https://leetcode-cn.com/problems/longest-common-prefix/</a></p>
+<h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>编写一个函数来查找字符串数组中的最长公共前缀。</p>
+<p>如果不存在公共前缀，返回空字符串 &quot;&quot;。</p>
+<p>示例 1：</p>
+<p>输入：strs = [&quot;flower&quot;,&quot;flow&quot;,&quot;flight&quot;]<br>输出：&quot;fl&quot;<br>示例 2：</p>
+<p>输入：strs = [&quot;dog&quot;,&quot;racecar&quot;,&quot;car&quot;]<br>输出：&quot;&quot;<br>解释：输入不存在公共前缀。</p>
+<p>提示：</p>
+<p>0 &lt;= strs.length &lt;= 200<br>0 &lt;= strs[i].length &lt;= 200<br>strs[i] 仅由小写英文字母组成</p>
+<h2 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h2><h3 id="1"><a href="#1" class="headerlink" title="1."></a>1.</h3><p>遍历字符串数组，纵向比较每一个字符串的字符，如果字符都相同，存入结果中，如果已达到某个字符串的末尾或者任意一个字符不相同，结束遍历，返回结果。</p>
+<img src="/posts/79715a0f/p14_1.jpg" alt="p14_1" style="zoom:80%;">
+
+<h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="built_in">std</span>::<span class="built_in">string</span> <span class="title">LongestCommonPrefix</span><span class="params">(<span class="keyword">const</span> <span class="built_in">std</span>::<span class="built_in">vector</span>&lt;<span class="built_in">std</span>::<span class="built_in">string</span>&gt;&amp; strs)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (strs.size() == <span class="number">0</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="string">&quot;&quot;</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="built_in">std</span>::<span class="built_in">string</span> result;</span><br><span class="line">        <span class="keyword">size_t</span> length = strs[<span class="number">0</span>].size();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">size_t</span> i = <span class="number">0</span>; i &lt; length; ++i)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">char</span> c = strs[<span class="number">0</span>][i];</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">size_t</span> j = <span class="number">1</span>; j &lt; strs.size(); ++j)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">if</span> (i &gt;= strs[j].size() || strs[j][i] != c)</span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="keyword">return</span> result;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            result += c;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h3 id="2"><a href="#2" class="headerlink" title="2."></a>2.</h3><p>使用分治法，将大的问题分解为一个一个的小问题，问题的最小规模为2个字符串求公共前缀，小问题的结果作为之前较大问题的条件参数进行回溯，从而得到最开始的最大问题的结果。</p>
+<p><img src="/posts/79715a0f/p14_2.jpg" alt="p14_2"></p>
+<h4 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="built_in">std</span>::<span class="built_in">string</span> <span class="title">LongestCommonPrefix</span><span class="params">(<span class="keyword">const</span> <span class="built_in">std</span>::<span class="built_in">vector</span>&lt;<span class="built_in">std</span>::<span class="built_in">string</span>&gt;&amp; strs)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (strs.size() == <span class="number">0</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="string">&quot;&quot;</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>-&gt;DivideConquer(strs, <span class="number">0</span>, strs.size() - <span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="function"><span class="built_in">std</span>::<span class="built_in">string</span> <span class="title">DivideConquer</span><span class="params">(<span class="keyword">const</span> <span class="built_in">std</span>::<span class="built_in">vector</span>&lt;<span class="built_in">std</span>::<span class="built_in">string</span>&gt;&amp; strs, <span class="keyword">const</span> <span class="keyword">int</span> left, <span class="keyword">const</span> <span class="keyword">int</span> right)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (right - left &lt;= <span class="number">1</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">this</span>-&gt;CommonPrefix(strs[left], strs[right]);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span> mid = (left + right) / <span class="number">2</span>;</span><br><span class="line">        <span class="built_in">std</span>::<span class="built_in">string</span> left_result = <span class="keyword">this</span>-&gt;DivideConquer(strs, left, mid);</span><br><span class="line">        <span class="built_in">std</span>::<span class="built_in">string</span> right_result = <span class="keyword">this</span>-&gt;DivideConquer(strs, mid + <span class="number">1</span>, right);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>-&gt;CommonPrefix(left_result, right_result);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="built_in">std</span>::<span class="built_in">string</span> <span class="title">CommonPrefix</span><span class="params">(<span class="keyword">const</span> <span class="built_in">std</span>::<span class="built_in">string</span>&amp; str1, <span class="keyword">const</span> <span class="built_in">std</span>::<span class="built_in">string</span>&amp; str2)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="built_in">std</span>::<span class="built_in">string</span> result;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">size_t</span> i = <span class="number">0</span>; i &lt; str1.size(); ++i)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">char</span> c = str1[i];</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (i &gt;= str2.size() || c != str2[i])</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">return</span> result;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            result += c;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h3 id="3"><a href="#3" class="headerlink" title="3."></a>3.</h3><p>使用二分查找的方法，首先找出字符串数组中最短的字符，因为最大公共前缀的长度至多就是整个最短字符串的长度。对整个最短字符串的长度做二分查找，分为左半部分和右半部分，然后对左半部分做遍历，看左半部分是否为一个公共前缀，如果是公共前缀，保存部分结果，并将下次二分查找的区间定位到右半区，因为左半部分的公共前缀肯定是小于等于整个公共前缀的，即右半部分可能还有公共前缀的一部分。如果左半部分不是公共前缀，将下次二分查找的区间定位到左半区，公共前缀肯定存在于更靠左的位置，因为公共前缀都是从左往右的。根据这个规则持续进行二分查找，直到遍历结束，得出结果。</p>
+<p><img src="/posts/79715a0f/p14_3.jpg" alt="p14_3"></p>
+<h4 id="代码-2"><a href="#代码-2" class="headerlink" title="代码"></a>代码</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line"><span class="keyword">public</span>:	</span><br><span class="line">    <span class="function"><span class="built_in">std</span>::<span class="built_in">string</span> <span class="title">LongestCommonPrefix</span><span class="params">(<span class="keyword">const</span> <span class="built_in">std</span>::<span class="built_in">vector</span>&lt;<span class="built_in">std</span>::<span class="built_in">string</span>&gt;&amp; strs)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (strs.size() == <span class="number">0</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="string">&quot;&quot;</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span> min_length = INT_MAX;</span><br><span class="line">        <span class="keyword">int</span> min_index = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">size_t</span> i = <span class="number">0</span>; i &lt; strs.size(); ++i)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span> (strs[i].size() &lt; min_length)</span><br><span class="line">            &#123;</span><br><span class="line">                min_length = strs[i].size();</span><br><span class="line">                min_index = i;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span> left = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> right = min_length - <span class="number">1</span>;</span><br><span class="line">        <span class="built_in">std</span>::<span class="built_in">string</span> result;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> (left &lt;= right)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">int</span> mid = (left + right) / <span class="number">2</span>;</span><br><span class="line">            <span class="keyword">bool</span> match = <span class="literal">true</span>;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">size_t</span> i = <span class="number">0</span>; i &lt; strs.size(); ++i)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">int</span> j = left; j &lt;= mid; ++j)</span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="keyword">if</span> (strs[min_index][j] != strs[i][j])</span><br><span class="line">                    &#123;</span><br><span class="line">                        match = <span class="literal">false</span>;</span><br><span class="line">                        <span class="keyword">break</span>;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">                <span class="keyword">if</span> (!match)</span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (match)</span><br><span class="line">            &#123;</span><br><span class="line">                result += strs[min_index].substr(left, mid - left + <span class="number">1</span>);</span><br><span class="line">                left = mid + <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">            &#123;</span><br><span class="line">                right = mid - <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://guicaisa.github.io/posts/d4fb0053.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="ciao">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ciao">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/posts/d4fb0053.html" class="post-title-link" itemprop="url">leetcode problem 13. 罗马数字转整数</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-03-27 18:48:23" itemprop="dateCreated datePublished" datetime="2021-03-27T18:48:23+08:00">2021-03-27</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-03-31 22:13:38" itemprop="dateModified" datetime="2021-03-31T22:13:38+08:00">2021-03-31</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/leetcode/" itemprop="url" rel="index"><span itemprop="name">leetcode</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/leetcode/leetcode-0001-0050/" itemprop="url" rel="index"><span itemprop="name">leetcode 0001-0050</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="leetcode-problem-13-罗马数字转整数"><a href="#leetcode-problem-13-罗马数字转整数" class="headerlink" title="leetcode problem 13. 罗马数字转整数"></a><center>leetcode problem 13. 罗马数字转整数</center></h1><h2 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h2><p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/roman-to-integer/">https://leetcode-cn.com/problems/roman-to-integer/</a></p>
 <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>罗马数字包含以下七种字符: I， V， X， L，C，D 和 M。</p>
 <p>字符          数值<br>I             1<br>V             5<br>X             10<br>L             50<br>C             100<br>D             500<br>M             1000<br>例如， 罗马数字 2 写做 II ，即为两个并列的 1。12 写做 XII ，即为 X + II 。 27 写做  XXVII, 即为 XX + V + II 。</p>
 <p>通常情况下，罗马数字中小的数字在大的数字的右边。但也存在特例，例如 4 不写做 IIII，而是 IV。数字 1 在数字 5 的左边，所表示的数等于大数 5 减小数 1 得到的数值 4 。同样地，数字 9 表示为 IX。这个特殊的规则只适用于以下六种情况：</p>
@@ -1053,112 +1151,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://guicaisa.github.io/posts/94c6bf9.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="ciao">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Ciao">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/posts/94c6bf9.html" class="post-title-link" itemprop="url">leetcode problem 4. 寻找两个正序数组的中位数</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-03-04 23:48:14" itemprop="dateCreated datePublished" datetime="2021-03-04T23:48:14+08:00">2021-03-04</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-03-13 14:56:12" itemprop="dateModified" datetime="2021-03-13T14:56:12+08:00">2021-03-13</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/leetcode/" itemprop="url" rel="index"><span itemprop="name">leetcode</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/leetcode/leetcode-0001-0050/" itemprop="url" rel="index"><span itemprop="name">leetcode 0001-0050</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="leetcode-problem-4-寻找两个正序数组的中位数"><a href="#leetcode-problem-4-寻找两个正序数组的中位数" class="headerlink" title="leetcode problem 4. 寻找两个正序数组的中位数"></a><center>leetcode problem 4. 寻找两个正序数组的中位数</center></h1><h2 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h2><p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/median-of-two-sorted-arrays/">https://leetcode-cn.com/problems/median-of-two-sorted-arrays/</a></p>
-<h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>给定两个大小分别为 m 和 n 的正序（从小到大）数组 nums1 和 nums2。请你找出并返回这两个正序数组的 中位数 。</p>
-<p>示例 1：</p>
-<p>输入：nums1 = [1,3], nums2 = [2]<br>输出：2.00000<br>解释：合并数组 = [1,2,3] ，中位数 2<br>示例 2：</p>
-<p>输入：nums1 = [1,2], nums2 = [3,4]<br>输出：2.50000<br>解释：合并数组 = [1,2,3,4] ，中位数 (2 + 3) / 2 = 2.5<br>示例 3：</p>
-<p>输入：nums1 = [0,0], nums2 = [0,0]<br>输出：0.00000<br>示例 4：</p>
-<p>输入：nums1 = [], nums2 = [1]<br>输出：1.00000<br>示例 5：</p>
-<p>输入：nums1 = [2], nums2 = []<br>输出：2.00000</p>
-<p>提示：</p>
-<p>nums1.length == m<br>nums2.length == n<br>0 &lt;= m &lt;= 1000<br>0 &lt;= n &lt;= 1000<br>1 &lt;= m + n &lt;= 2000<br>-106 &lt;= nums1[i], nums2[i] &lt;= 106</p>
-<p>进阶：你能设计一个时间复杂度为 O(log (m+n)) 的算法解决此问题吗？</p>
-<h2 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h2><h3 id="1"><a href="#1" class="headerlink" title="1."></a>1.</h3><p>根据2个数组的长度算出中间值的索引，以升序分别从2个数组中取值，递增索引，直到找到中间值。</p>
-<h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">double</span> <span class="title">FindMedianSortedArrays</span><span class="params">(<span class="keyword">const</span> <span class="built_in">std</span>::<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums1, <span class="keyword">const</span> <span class="built_in">std</span>::<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums2)</span> </span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> even_flag = (nums1.size() + nums2.size()) % <span class="number">2</span> == <span class="number">0</span> ? <span class="number">1</span> : <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> previous_num = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> current_num = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> middle_index = (nums1.size() + nums2.size()) / <span class="number">2</span>;</span><br><span class="line">        <span class="keyword">int</span> index = <span class="number">-1</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">size_t</span> i = <span class="number">0</span>, j = <span class="number">0</span>; ; )</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span> (i &lt; nums1.size() &amp;&amp; j &lt; nums2.size())</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">if</span> (nums1[i] &lt; nums2[j])</span><br><span class="line">                &#123;</span><br><span class="line">                    current_num = nums1[i++];</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">else</span></span><br><span class="line">                &#123;</span><br><span class="line">                    current_num = nums2[j++];</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (i &lt; nums1.size())</span><br><span class="line">            &#123;</span><br><span class="line">                current_num = nums1[i++];</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (j &lt; nums2.size())</span><br><span class="line">            &#123;</span><br><span class="line">                current_num = nums2[j++];</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (++index == middle_index)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">return</span> even_flag == <span class="number">1</span> ? (previous_num + current_num) / <span class="number">2.0f</span> : current_num;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            previous_num = current_num;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<h3 id="2"><a href="#2" class="headerlink" title="2."></a>2.</h3><p>假设有2个已经排序好的数组A，B长度分别为m，n，如果将这两个数组合并在一起，升序排列后得到新的数组，一定可以平均分成两部分(如果总长度为奇数那么中间就会多一个数)，这时候可以很轻松的判断出中位数是什么，如果长度为偶数，中位数=(左边最大数 + 右边最小数) / 2，如果长度为奇数那中位数就是最中间的那个数。</p>
-<p>这时候就一定会有两个分割点索引i，j，将数组A和B分别从i，j的位置分成左右两个部分。A左 + B左构成新数组的左半部分，A右 + B右构成新数组的右半部分，如果A和B的总长度为偶数的话，这两部分长度相同，如果为奇数的话，就让左边的长度比右边多1(这样方便后面的计算)。在进行了这样的拆分之后，可以保证A左和B左中的任意一个数必定 &lt;= A右和B右中的任意一个数，即A[i - 1] &lt;= B[j] &amp;&amp; B[j - 1] &lt;= A[i]，因为数组都是升序排列的，所以这个判断条件肯定是A左中的最大值 &lt;= B右中的最小值，B左中的最大值 &lt;= A右中的最小值，举例：</p>
-<p><img src="/posts/94c6bf9/p4_1.jpg" alt="p4_1"></p>
-<p>先合并排成新数组</p>
-<p><img src="/posts/94c6bf9/p4_2.jpg" alt="p4_2"></p>
-<p>很明显的可以看到，中位数在5和6之间，即为5.5，A左为1，4，5，A右为9，11，i为3，B左为2，3，B右为6，8，10，j为2。并且满足上述条件A[i - 1] &lt;= B[j] &amp;&amp; B[j - 1] &lt;= A[i]，在这里就是A[2] = 5 &lt;= B[2] = 6，B[1] = 3 &lt;= A[3] = 9，奇数的情况也是类似，不过左半部分会多出一个值。</p>
-<p>由此结论可以推导出一个公式 i + j = m - i + n - j，如果m + n为奇数，这里等式右边需要+1，因为i + j可以理解为合并后的数组左半边的个数，m - i + n - j可以理解为合并后的数组右半边的个数，奇数的情况我们让左半边多了一个数，所以这里需要+1。由此可以得出求j的公式，j = (m + n + 1) / 2 - i，其中的+1是为了可以同时处理偶数和奇数的情况。这个公式有一个要求，m &lt;= n，即数组A为长度较小的那一个，因为 0 &lt;= i &lt; m，如果 m &gt; n，可能会导致j为负数。之后就可以对数组A(长度较小的)进行二分查找了，找到合适的i，并通过公式得到相应的j，根据结果推断下一次二分查找的方向或者是得到最终的结果，二分查找只会遇到三种情况:</p>
-<p>1: (i == 0 || j == n || A[i - 1] &lt;= B[j]) &amp;&amp; (j == 0 || i == m || B[j - 1] &lt;= A[i])，A左的最大值小于等于B右的最小值，B左的最大值小于等于A右的最小值，表示找到了正确结果，考虑到边界情况可能遇到i - 1，i，j - 1，j的索引值无效，需要加上额外判断条件。</p>
-<p>2: i &gt; 0 &amp;&amp; j &lt; n &amp;&amp; A[i - 1] &gt; B[j]，当前i的值过大，i需要向左移动，找到更小的值(数组是升序排列的)，根据求j公式相应的j会更大，找到更大的值，将下一次二分查找的区间定位到左半区，同样需要考虑边界。</p>
-<p>3: j &gt; 0 &amp;&amp; i &lt; m &amp;&amp; B[j - 1] &gt; A[i]，当前i的值过小，i需要向右移动，找到更大的值，根据求j公式相应的j会更小，找到更小的值，将下一次二分查找的区间定位到右半区，同样需要考虑边界。</p>
-<p>不断进行二分查找，直到找到结果或者循环结束，得到相应的i，j，如果m + n为奇数，则中位数为max(A[i - 1]，B[j - 1])，此时也需要注意边界，如果i == 0或j == 0则要取另外一个值。如果m + n为偶数，则取max(A[i - 1], B[j - 1]) + min(A[i]，B[j]) / 2，同样如果有边界问题的话，取另一个值。</p>
-<h4 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">double</span> <span class="title">FindMedianSortedArrays</span><span class="params">(<span class="keyword">const</span> <span class="built_in">std</span>::<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums1, <span class="keyword">const</span> <span class="built_in">std</span>::<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums2)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (nums1.size() &gt; nums2.size())</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">return</span> FindMedianSortedArraysBinarySerach(nums2, nums1);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span> len1 = nums1.size();</span><br><span class="line">        <span class="keyword">int</span> len2 = nums2.size();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span> low = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> high = len1;</span><br><span class="line">        <span class="keyword">int</span> i = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> j = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> (low &lt;= high)</span><br><span class="line">        &#123;</span><br><span class="line">            i = (low + high) / <span class="number">2</span>;</span><br><span class="line">            j = (len1 + len2 + <span class="number">1</span>) / <span class="number">2</span> - i;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> ((i == <span class="number">0</span> || j == len2 || nums1[i - <span class="number">1</span>] &lt;= nums2[j]) &amp;&amp;</span><br><span class="line">                (i == len1 || j == <span class="number">0</span> || nums2[j - <span class="number">1</span>] &lt;= nums1[i]))</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (i &gt; <span class="number">0</span> &amp;&amp; j &lt; len2 &amp;&amp; nums1[i - <span class="number">1</span>] &gt; nums2[j])</span><br><span class="line">            &#123;</span><br><span class="line">                high = i - <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (j &gt; <span class="number">0</span> &amp;&amp; i &lt; len1 &amp;&amp; nums2[j - <span class="number">1</span>] &gt; nums1[i])</span><br><span class="line">            &#123;</span><br><span class="line">                low = i + <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span> left_max = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">if</span> (i == <span class="number">0</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            left_max = nums2[j - <span class="number">1</span>];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (j == <span class="number">0</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            left_max = nums1[i - <span class="number">1</span>];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            left_max = <span class="built_in">std</span>::max(nums1[i - <span class="number">1</span>], nums2[j - <span class="number">1</span>]);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> ((len1 + len2) % <span class="number">2</span> == <span class="number">1</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">return</span> left_max;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span> right_min = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">if</span> (i == len1)</span><br><span class="line">        &#123;</span><br><span class="line">            right_min = nums2[j];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (j == len2)</span><br><span class="line">        &#123;</span><br><span class="line">            right_min = nums1[i];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            right_min = <span class="built_in">std</span>::min(nums1[i], nums2[j]);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> (left_max + right_min) / <span class="number">2.0f</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-
-
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1228,7 +1220,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">13</span>
+          <span class="site-state-item-count">14</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
