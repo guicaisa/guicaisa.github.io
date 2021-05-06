@@ -160,6 +160,135 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://guicaisa.github.io/posts/af8e438c.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="ciao">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ciao">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/posts/af8e438c.html" class="post-title-link" itemprop="url">leetcode problem 28. 实现 strStr()</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2021-05-06 21:50:35 / 修改时间：23:23:22" itemprop="dateCreated datePublished" datetime="2021-05-06T21:50:35+08:00">2021-05-06</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/leetcode/" itemprop="url" rel="index"><span itemprop="name">leetcode</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/leetcode/leetcode-0001-0050/" itemprop="url" rel="index"><span itemprop="name">leetcode 0001-0050</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="leetcode-problem-28-实现-strStr"><a href="#leetcode-problem-28-实现-strStr" class="headerlink" title="leetcode problem 28. 实现 strStr()"></a><center>leetcode problem 28. 实现 strStr()</center></h1><h2 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h2><p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/implement-strstr/">https://leetcode-cn.com/problems/implement-strstr/</a></p>
+<h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>实现 <a target="_blank" rel="noopener" href="https://baike.baidu.com/item/strstr/811469">strStr()</a> 函数。</p>
+<p>给你两个字符串 <code>haystack</code> 和 <code>needle</code> ，请你在 <code>haystack</code> 字符串中找出 <code>needle</code> 字符串出现的第一个位置（下标从 0 开始）。如果不存在，则返回 <code>-1</code> 。</p>
+<p><strong>说明：</strong></p>
+<p>当 <code>needle</code> 是空字符串时，我们应当返回什么值呢？这是一个在面试中很好的问题。</p>
+<p>对于本题而言，当 <code>needle</code> 是空字符串时我们应当返回 0 。这与 C 语言的 <a target="_blank" rel="noopener" href="https://baike.baidu.com/item/strstr/811469">strstr()</a> 以及 Java 的 <a target="_blank" rel="noopener" href="https://docs.oracle.com/javase/7/docs/api/java/lang/String.html#indexOf(java.lang.String)">indexOf()</a> 定义相符。</p>
+<p><strong>示例 1：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：haystack &#x3D; \&quot;hello\&quot;, needle &#x3D; \&quot;ll\&quot;</span><br><span class="line">输出：2</span><br></pre></td></tr></table></figure>
+
+<p><strong>示例 2：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：haystack &#x3D; \&quot;aaaaa\&quot;, needle &#x3D; \&quot;bba\&quot;</span><br><span class="line">输出：-1</span><br></pre></td></tr></table></figure>
+
+<p><strong>示例 3：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：haystack &#x3D; \&quot;\&quot;, needle &#x3D; \&quot;\&quot;</span><br><span class="line">输出：0</span><br></pre></td></tr></table></figure>
+
+<p><strong>提示：</strong></p>
+<ul>
+<li><code>0 &lt;= haystack.length, needle.length &lt;= 5 * 104</code></li>
+<li><code>haystack</code> 和 <code>needle</code> 仅由小写英文字符组成</li>
+</ul>
+<h2 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h2><h3 id="1"><a href="#1" class="headerlink" title="1."></a>1.</h3><p>暴力求解法，遍历字符串，逐个字符当作子串的开始，与匹配串进行判断。</p>
+<h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">StrStr</span><span class="params">(<span class="keyword">const</span> <span class="built_in">std</span>::<span class="built_in">string</span>&amp; haystack, <span class="keyword">const</span> <span class="built_in">std</span>::<span class="built_in">string</span>&amp; needle)</span> </span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (needle.size() == <span class="number">0</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">size_t</span> size = haystack.size();</span><br><span class="line">        <span class="keyword">size_t</span> n_size = needle.size();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">size_t</span> i = <span class="number">0</span>; i &lt; size &amp;&amp; size - i &gt;= n_size; ++i)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span> (haystack[i] == needle[<span class="number">0</span>])</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">size_t</span> j = i, k = <span class="number">0</span>; j &lt; size &amp;&amp; k &lt; n_size; ++j, ++k)</span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="keyword">if</span> (haystack[j] == needle[k])</span><br><span class="line">                    &#123;</span><br><span class="line">                        <span class="keyword">if</span> (k == n_size - <span class="number">1</span>)</span><br><span class="line">                        &#123;</span><br><span class="line">                            <span class="keyword">return</span> i;</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                    <span class="keyword">else</span></span><br><span class="line">                    &#123;</span><br><span class="line">                        <span class="keyword">break</span>;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h3 id="2"><a href="#2" class="headerlink" title="2."></a>2.</h3><p>使用kmp算法，根据已匹配的子串的最长公共前缀后缀长度，将搜索字符串的索引定位到合理的位置，即相同公共前缀后缀的第一位，继续进行判断，减少多余的重复判断，提高效率。</p>
+<p>举个例子，有一个搜索字符串str=&quot;ABCDABEEFG&quot;，一个匹配串p=&quot;ABCDABH&quot;。我们先使用暴力求解的方式进行匹配。</p>
+<p>第一次匹配：</p>
+<p><img src="/posts/af8e438c/p28_1.jpg" alt="p28_1"></p>
+<p>str从索引0开始，与p进行匹配判断，前6个字符匹配，但是第7个字符不匹配，这个时候常规的做法是将str的索引往右移一位，从索引1的位置开始继续下一次匹配判断。</p>
+<p>第二次匹配：</p>
+<p><img src="/posts/af8e438c/p28_2.jpg" alt="p28_2"></p>
+<p>这一次直接第一个字符就不匹配了，接下来后面需要继续递进str的索引，将str中的每一个字符当作子串的起始字符与p进行匹配。这样做的效率很低，kmp算法可以通过计算子串中存在的最长公共前缀后缀的长度，来省略掉部分的匹配操作，从而提升效率。</p>
+<p>回到第一次匹配的情况，str与p的前6的字符匹配成功，但是第七个字符匹配失败了，这时候我们观察下前6个字符&quot;ABCDAB&quot;，这是已匹配的部分，其中&quot;AB&quot;在头尾各出现了1次，我们可以用肉眼得出这个子串的最长公共前缀和后缀的长度为2。通过字符串的公共前缀后缀的性质我们可以得知，前缀的部分在该字符串中任何非公共前缀后缀的位置是无法匹配的，简而言之就是这个已经匹配的子串&quot;ABCDAB&quot;，无法在以从&#39;B&#39;，&#39;C&#39;，&#39;D&#39;为开头的字符串形成匹配，所以在第一次匹配结束后，根据已匹配的子串中的公共前缀和后缀的长度，可以直接略过&quot;ABCDAB&quot;中的&#39;B&#39;，&#39;C&#39;，&#39;D&#39;三个字符，直接在第二个&#39;A&#39;的位置开始下一次的匹配判断，省略掉了中间的匹配判断步骤，提升了效率。</p>
+<p><img src="/posts/af8e438c/p28_3.jpg" alt="p28_3"></p>
+<p>假设第一次匹配的时候str从索引0的位置开始，j为遍历p的索引，第一次匹配了6个字符，i = j = 6的时候，字符产生了不匹配，这时候需要寻找下一次i开始遍历的位置。已知已匹配的子串&quot;ABCDAB&quot;最长公共前缀后缀长度为2，下一次起始匹配索引i的位置 = 6 - 2 = 4，即str中第二个&#39;A&#39;的位置。</p>
+<p><img src="/posts/af8e438c/p28_4.jpg" alt="p28_4"></p>
+<p>重复这样的操作，直到找到完全匹配的子串，或者没有找到合适的匹配，返回结果。</p>
+<p>这种类似动态规划的方式，肯定需要一个状态转移的数据结构，我们需要计算p中所有子串的最长公共前缀后缀的长度，保存在一个数组中。dp[i]表示在p字符串中，从第一个字符开始，长度为i+1的子串，所拥有的最长公共前缀后缀的长度。以&quot;ABCDABEAB&quot;为例，来看下计算这个dp数组的步骤，i表示索引，len表示公共前缀后缀的长度。</p>
+<p>第一个子串&quot;A&quot;，公共前缀后缀长度肯定为0:</p>
+<p><img src="/posts/af8e438c/p28_5.jpg" alt="p28_5"></p>
+<p>子串&quot;AB&quot;：</p>
+<p><img src="/posts/af8e438c/p28_6.jpg" alt="p28_6"></p>
+<p>子串&quot;ABC&quot;：</p>
+<p><img src="/posts/af8e438c/p28_7.jpg" alt="p28_7"></p>
+<p>子串&quot;ABCD&quot;：</p>
+<p><img src="/posts/af8e438c/p28_8.jpg" alt="p28_8"></p>
+<p>子串&quot;ABCDA&quot;：</p>
+<p><img src="/posts/af8e438c/p28_9.jpg" alt="p28_9"></p>
+<p>子串&quot;ABCDAB&quot;：</p>
+<p><img src="/posts/af8e438c/p28_10.jpg" alt="p28_10"></p>
+<p>子串&quot;ABCDABE&quot;：</p>
+<p><img src="/posts/af8e438c/p28_11.jpg" alt="p28_11"></p>
+<p>子串&quot;ABCDABEA&quot;：</p>
+<p><img src="/posts/af8e438c/p28_12.jpg" alt="p28_12"></p>
+<p>子串&quot;ABCDABEAB&quot;：</p>
+<p><img src="/posts/af8e438c/p28_13.jpg" alt="p28_13"></p>
+<p>这个例子描述了下面代码里生成dp数组的方法的逻辑，其中len代表了当前的最长公共前缀后缀的长度，其实就是表示了前len个字符，所以在遍历中计算每个子串的公共前缀后缀长度时，需要判断当前字符和前第len个字符的相等关系，如果相等，len可以递增，然后保存到dp中，如果不相同，就需要递减len到0或者直到找到相同的字符。</p>
+<h4 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">StrStr</span><span class="params">(<span class="keyword">const</span> <span class="built_in">std</span>::<span class="built_in">string</span>&amp; haystack, <span class="keyword">const</span> <span class="built_in">std</span>::<span class="built_in">string</span>&amp; needle)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (needle == <span class="string">&quot;&quot;</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="built_in">std</span>::<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; <span class="title">next</span><span class="params">(needle.size(), <span class="number">0</span>)</span></span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">this</span>-&gt;GenerateKmpNext(needle, next);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">size_t</span> j = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">size_t</span> i = <span class="number">0</span>; i &lt; haystack.size(); ++i)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span> (haystack[i] == needle[j])</span><br><span class="line">            &#123;</span><br><span class="line">                ++j;</span><br><span class="line">                <span class="keyword">if</span> (j == needle.size())</span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="keyword">return</span> i - j + <span class="number">1</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">if</span> (j &gt; <span class="number">0</span>)</span><br><span class="line">                &#123;</span><br><span class="line">                    i -= (next[j - <span class="number">1</span>] + <span class="number">1</span>);</span><br><span class="line">                &#125;</span><br><span class="line">                j = <span class="number">0</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">GenerateKmpNext</span><span class="params">(<span class="keyword">const</span> <span class="built_in">std</span>::<span class="built_in">string</span>&amp; needle, <span class="built_in">std</span>::<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; next)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> len = <span class="number">0</span>;</span><br><span class="line">        next[<span class="number">0</span>] = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">size_t</span> i = <span class="number">1</span>; i &lt; needle.size(); ++i)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">while</span> (len &gt; <span class="number">0</span> &amp;&amp; needle[len] != needle[i])</span><br><span class="line">            &#123;</span><br><span class="line">                len = next[len - <span class="number">1</span>];</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (needle[len] == needle[i])</span><br><span class="line">            &#123;</span><br><span class="line">                ++len;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            next[i] = len;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://guicaisa.github.io/posts/fcd1e34.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -185,7 +314,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2021-05-01 16:20:19 / 修改时间：16:46:14" itemprop="dateCreated datePublished" datetime="2021-05-01T16:20:19+08:00">2021-05-01</time>
+              <time title="创建时间：2021-05-01 16:20:19 / 修改时间：16:47:28" itemprop="dateCreated datePublished" datetime="2021-05-01T16:20:19+08:00">2021-05-01</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -964,88 +1093,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://guicaisa.github.io/posts/70a7dae8.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="ciao">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Ciao">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/posts/70a7dae8.html" class="post-title-link" itemprop="url">leetcode problem 18. 四数之和</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2021-04-06 23:09:36 / 修改时间：23:14:13" itemprop="dateCreated datePublished" datetime="2021-04-06T23:09:36+08:00">2021-04-06</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/leetcode/" itemprop="url" rel="index"><span itemprop="name">leetcode</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/leetcode/leetcode-0001-0050/" itemprop="url" rel="index"><span itemprop="name">leetcode 0001-0050</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="leetcode-problem-18-四数之和"><a href="#leetcode-problem-18-四数之和" class="headerlink" title="leetcode problem 18. 四数之和"></a><center>leetcode problem 18. 四数之和</center></h1><h2 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h2><p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/4sum/">https://leetcode-cn.com/problems/4sum/</a></p>
-<h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>给定一个包含 n 个整数的数组 nums 和一个目标值 target，判断 nums 中是否存在四个元素 a，b，c 和 d ，使得 a + b + c + d 的值与 target 相等？找出所有满足条件且不重复的四元组。</p>
-<p>注意：答案中不可以包含重复的四元组。</p>
-<p>示例 1：</p>
-<p>输入：nums = [1,0,-1,0,-2,2], target = 0<br>输出：[[-2,-1,1,2],[-2,0,0,2],[-1,0,0,1]]<br>示例 2：</p>
-<p>输入：nums = [], target = 0<br>输出：[]</p>
-<p>提示：</p>
-<p>0 &lt;= nums.length &lt;= 200<br>-109 &lt;= nums[i] &lt;= 109<br>-109 &lt;= target &lt;= 109</p>
-<h2 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h2><h3 id="1"><a href="#1" class="headerlink" title="1."></a>1.</h3><p>切割问题，分离成为一个数字和三个数字，使用3Sum的方式求剩下的三个数字的结果，与<a href="https://guicaisa.github.io/posts/2b295c88.html">3Sum的解法</a>相似。</p>
-<h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="built_in">std</span>::<span class="built_in">vector</span>&lt;<span class="built_in">std</span>::<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; &gt; <span class="title">FourSum</span><span class="params">(<span class="built_in">std</span>::<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums, <span class="keyword">const</span> <span class="keyword">int</span> target)</span> </span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="built_in">std</span>::<span class="built_in">vector</span>&lt;<span class="built_in">std</span>::<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; &gt; results;</span><br><span class="line">        sort(nums.begin(), nums.end());</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">size_t</span> i = <span class="number">0</span>; i &lt; nums.size(); ++i)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span> (nums.size() - i &lt; <span class="number">4</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (i &gt; <span class="number">0</span> &amp;&amp; nums[i] == nums[i - <span class="number">1</span>])</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">continue</span>;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">this</span>-&gt;ThreeSum(nums, i + <span class="number">1</span>, target - nums[i], results);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> results;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">ThreeSum</span><span class="params">(<span class="keyword">const</span> <span class="built_in">std</span>::<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums, <span class="keyword">const</span> <span class="keyword">int</span> start_index, <span class="keyword">const</span> <span class="keyword">int</span> target, <span class="built_in">std</span>::<span class="built_in">vector</span>&lt;<span class="built_in">std</span>::<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; &gt;&amp; results)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> first_num = nums[start_index - <span class="number">1</span>];</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">size_t</span> i = start_index; i &lt; nums.size(); ++i)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span> (nums.size() - i &lt; <span class="number">3</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (i &gt; start_index &amp;&amp; nums[i] == nums[i - <span class="number">1</span>])</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">continue</span>;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">int</span> left = i + <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">int</span> right = nums.size() - <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">while</span> (left &lt; right)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">int</span> sum = nums[i] + nums[left] + nums[right];</span><br><span class="line">                <span class="keyword">if</span> (sum &lt; target)</span><br><span class="line">                &#123;</span><br><span class="line">                    ++left;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">else</span> <span class="keyword">if</span> (sum &gt; target)</span><br><span class="line">                &#123;</span><br><span class="line">                    --right;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">else</span></span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="built_in">std</span>::<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; temp_vec;</span><br><span class="line">                    temp_vec.emplace_back(first_num);</span><br><span class="line">                    temp_vec.emplace_back(nums[i]);</span><br><span class="line">                    temp_vec.emplace_back(nums[left]);</span><br><span class="line">                    temp_vec.emplace_back(nums[right]);</span><br><span class="line">                    results.push_back(temp_vec);</span><br><span class="line"></span><br><span class="line">                    <span class="keyword">while</span> (left + <span class="number">1</span> &lt; nums.size() &amp;&amp; nums[left] == nums[left + <span class="number">1</span>])</span><br><span class="line">                    &#123;</span><br><span class="line">                        ++left;</span><br><span class="line">                    &#125;</span><br><span class="line"></span><br><span class="line">                    <span class="keyword">while</span> (right &gt; <span class="number">0</span> &amp;&amp; nums[right] == nums[right - <span class="number">1</span>])</span><br><span class="line">                    &#123;</span><br><span class="line">                        --right;</span><br><span class="line">                    &#125;</span><br><span class="line"></span><br><span class="line">                    ++left;</span><br><span class="line">                    --right;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1115,7 +1162,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">27</span>
+          <span class="site-state-item-count">28</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>

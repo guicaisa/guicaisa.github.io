@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"guicaisa.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="leetcode problem 28. 实现 strStr()链接https:&#x2F;&#x2F;leetcode-cn.com&#x2F;problems&#x2F;implement-strstr&#x2F; 题目描述实现 strStr() 函数。 给你两个字符串 haystack 和 needle ，请你在 haystack 字符串中找出 needle 字符串出现的第一个位置（下标从 0 开始）。如果不存在，则返回 -1 。 说明：">
+<meta property="og:type" content="article">
+<meta property="og:title" content="leetcode problem 28. 实现 strStr()">
+<meta property="og:url" content="https://guicaisa.github.io/posts/af8e438c.html">
+<meta property="og:site_name" content="Ciao">
+<meta property="og:description" content="leetcode problem 28. 实现 strStr()链接https:&#x2F;&#x2F;leetcode-cn.com&#x2F;problems&#x2F;implement-strstr&#x2F; 题目描述实现 strStr() 函数。 给你两个字符串 haystack 和 needle ，请你在 haystack 字符串中找出 needle 字符串出现的第一个位置（下标从 0 开始）。如果不存在，则返回 -1 。 说明：">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://guicaisa.github.io/posts/af8e438c/p28_1.jpg">
+<meta property="og:image" content="https://guicaisa.github.io/posts/af8e438c/p28_2.jpg">
+<meta property="og:image" content="https://guicaisa.github.io/posts/af8e438c/p28_3.jpg">
+<meta property="og:image" content="https://guicaisa.github.io/posts/af8e438c/p28_4.jpg">
+<meta property="og:image" content="https://guicaisa.github.io/posts/af8e438c/p28_5.jpg">
+<meta property="og:image" content="https://guicaisa.github.io/posts/af8e438c/p28_6.jpg">
+<meta property="og:image" content="https://guicaisa.github.io/posts/af8e438c/p28_7.jpg">
+<meta property="og:image" content="https://guicaisa.github.io/posts/af8e438c/p28_8.jpg">
+<meta property="og:image" content="https://guicaisa.github.io/posts/af8e438c/p28_9.jpg">
+<meta property="og:image" content="https://guicaisa.github.io/posts/af8e438c/p28_10.jpg">
+<meta property="og:image" content="https://guicaisa.github.io/posts/af8e438c/p28_11.jpg">
+<meta property="og:image" content="https://guicaisa.github.io/posts/af8e438c/p28_12.jpg">
+<meta property="og:image" content="https://guicaisa.github.io/posts/af8e438c/p28_13.jpg">
+<meta property="article:published_time" content="2021-05-06T13:50:35.000Z">
+<meta property="article:modified_time" content="2021-05-06T15:23:22.346Z">
+<meta property="article:author" content="ciao">
+<meta property="article:tag" content="算法">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://guicaisa.github.io/posts/af8e438c/p28_1.jpg">
+
+<link rel="canonical" href="https://guicaisa.github.io/posts/af8e438c.html">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>leetcode problem 28. 实现 strStr() | Ciao</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Ciao</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://guicaisa.github.io/posts/af8e438c.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="ciao">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ciao">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          leetcode problem 28. 实现 strStr()
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2021-05-06 21:50:35 / 修改时间：23:23:22" itemprop="dateCreated datePublished" datetime="2021-05-06T21:50:35+08:00">2021-05-06</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/leetcode/" itemprop="url" rel="index"><span itemprop="name">leetcode</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/leetcode/leetcode-0001-0050/" itemprop="url" rel="index"><span itemprop="name">leetcode 0001-0050</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="leetcode-problem-28-实现-strStr"><a href="#leetcode-problem-28-实现-strStr" class="headerlink" title="leetcode problem 28. 实现 strStr()"></a><center>leetcode problem 28. 实现 strStr()</center></h1><h2 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h2><p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/implement-strstr/">https://leetcode-cn.com/problems/implement-strstr/</a></p>
+<h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>实现 <a target="_blank" rel="noopener" href="https://baike.baidu.com/item/strstr/811469">strStr()</a> 函数。</p>
+<p>给你两个字符串 <code>haystack</code> 和 <code>needle</code> ，请你在 <code>haystack</code> 字符串中找出 <code>needle</code> 字符串出现的第一个位置（下标从 0 开始）。如果不存在，则返回 <code>-1</code> 。</p>
+<p><strong>说明：</strong></p>
+<p>当 <code>needle</code> 是空字符串时，我们应当返回什么值呢？这是一个在面试中很好的问题。</p>
+<p>对于本题而言，当 <code>needle</code> 是空字符串时我们应当返回 0 。这与 C 语言的 <a target="_blank" rel="noopener" href="https://baike.baidu.com/item/strstr/811469">strstr()</a> 以及 Java 的 <a target="_blank" rel="noopener" href="https://docs.oracle.com/javase/7/docs/api/java/lang/String.html#indexOf(java.lang.String)">indexOf()</a> 定义相符。</p>
+<p><strong>示例 1：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：haystack &#x3D; \&quot;hello\&quot;, needle &#x3D; \&quot;ll\&quot;</span><br><span class="line">输出：2</span><br></pre></td></tr></table></figure>
+
+<p><strong>示例 2：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：haystack &#x3D; \&quot;aaaaa\&quot;, needle &#x3D; \&quot;bba\&quot;</span><br><span class="line">输出：-1</span><br></pre></td></tr></table></figure>
+
+<p><strong>示例 3：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：haystack &#x3D; \&quot;\&quot;, needle &#x3D; \&quot;\&quot;</span><br><span class="line">输出：0</span><br></pre></td></tr></table></figure>
+
+<p><strong>提示：</strong></p>
+<ul>
+<li><code>0 &lt;= haystack.length, needle.length &lt;= 5 * 104</code></li>
+<li><code>haystack</code> 和 <code>needle</code> 仅由小写英文字符组成</li>
+</ul>
+<h2 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h2><h3 id="1"><a href="#1" class="headerlink" title="1."></a>1.</h3><p>暴力求解法，遍历字符串，逐个字符当作子串的开始，与匹配串进行判断。</p>
+<h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">StrStr</span><span class="params">(<span class="keyword">const</span> <span class="built_in">std</span>::<span class="built_in">string</span>&amp; haystack, <span class="keyword">const</span> <span class="built_in">std</span>::<span class="built_in">string</span>&amp; needle)</span> </span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (needle.size() == <span class="number">0</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">size_t</span> size = haystack.size();</span><br><span class="line">        <span class="keyword">size_t</span> n_size = needle.size();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">size_t</span> i = <span class="number">0</span>; i &lt; size &amp;&amp; size - i &gt;= n_size; ++i)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span> (haystack[i] == needle[<span class="number">0</span>])</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">size_t</span> j = i, k = <span class="number">0</span>; j &lt; size &amp;&amp; k &lt; n_size; ++j, ++k)</span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="keyword">if</span> (haystack[j] == needle[k])</span><br><span class="line">                    &#123;</span><br><span class="line">                        <span class="keyword">if</span> (k == n_size - <span class="number">1</span>)</span><br><span class="line">                        &#123;</span><br><span class="line">                            <span class="keyword">return</span> i;</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                    <span class="keyword">else</span></span><br><span class="line">                    &#123;</span><br><span class="line">                        <span class="keyword">break</span>;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h3 id="2"><a href="#2" class="headerlink" title="2."></a>2.</h3><p>使用kmp算法，根据已匹配的子串的最长公共前缀后缀长度，将搜索字符串的索引定位到合理的位置，即相同公共前缀后缀的第一位，继续进行判断，减少多余的重复判断，提高效率。</p>
+<p>举个例子，有一个搜索字符串str=&quot;ABCDABEEFG&quot;，一个匹配串p=&quot;ABCDABH&quot;。我们先使用暴力求解的方式进行匹配。</p>
+<p>第一次匹配：</p>
+<p><img src="/posts/af8e438c/p28_1.jpg" alt="p28_1"></p>
+<p>str从索引0开始，与p进行匹配判断，前6个字符匹配，但是第7个字符不匹配，这个时候常规的做法是将str的索引往右移一位，从索引1的位置开始继续下一次匹配判断。</p>
+<p>第二次匹配：</p>
+<p><img src="/posts/af8e438c/p28_2.jpg" alt="p28_2"></p>
+<p>这一次直接第一个字符就不匹配了，接下来后面需要继续递进str的索引，将str中的每一个字符当作子串的起始字符与p进行匹配。这样做的效率很低，kmp算法可以通过计算子串中存在的最长公共前缀后缀的长度，来省略掉部分的匹配操作，从而提升效率。</p>
+<p>回到第一次匹配的情况，str与p的前6的字符匹配成功，但是第七个字符匹配失败了，这时候我们观察下前6个字符&quot;ABCDAB&quot;，这是已匹配的部分，其中&quot;AB&quot;在头尾各出现了1次，我们可以用肉眼得出这个子串的最长公共前缀和后缀的长度为2。通过字符串的公共前缀后缀的性质我们可以得知，前缀的部分在该字符串中任何非公共前缀后缀的位置是无法匹配的，简而言之就是这个已经匹配的子串&quot;ABCDAB&quot;，无法在以从&#39;B&#39;，&#39;C&#39;，&#39;D&#39;为开头的字符串形成匹配，所以在第一次匹配结束后，根据已匹配的子串中的公共前缀和后缀的长度，可以直接略过&quot;ABCDAB&quot;中的&#39;B&#39;，&#39;C&#39;，&#39;D&#39;三个字符，直接在第二个&#39;A&#39;的位置开始下一次的匹配判断，省略掉了中间的匹配判断步骤，提升了效率。</p>
+<p><img src="/posts/af8e438c/p28_3.jpg" alt="p28_3"></p>
+<p>假设第一次匹配的时候str从索引0的位置开始，j为遍历p的索引，第一次匹配了6个字符，i = j = 6的时候，字符产生了不匹配，这时候需要寻找下一次i开始遍历的位置。已知已匹配的子串&quot;ABCDAB&quot;最长公共前缀后缀长度为2，下一次起始匹配索引i的位置 = 6 - 2 = 4，即str中第二个&#39;A&#39;的位置。</p>
+<p><img src="/posts/af8e438c/p28_4.jpg" alt="p28_4"></p>
+<p>重复这样的操作，直到找到完全匹配的子串，或者没有找到合适的匹配，返回结果。</p>
+<p>这种类似动态规划的方式，肯定需要一个状态转移的数据结构，我们需要计算p中所有子串的最长公共前缀后缀的长度，保存在一个数组中。dp[i]表示在p字符串中，从第一个字符开始，长度为i+1的子串，所拥有的最长公共前缀后缀的长度。以&quot;ABCDABEAB&quot;为例，来看下计算这个dp数组的步骤，i表示索引，len表示公共前缀后缀的长度。</p>
+<p>第一个子串&quot;A&quot;，公共前缀后缀长度肯定为0:</p>
+<p><img src="/posts/af8e438c/p28_5.jpg" alt="p28_5"></p>
+<p>子串&quot;AB&quot;：</p>
+<p><img src="/posts/af8e438c/p28_6.jpg" alt="p28_6"></p>
+<p>子串&quot;ABC&quot;：</p>
+<p><img src="/posts/af8e438c/p28_7.jpg" alt="p28_7"></p>
+<p>子串&quot;ABCD&quot;：</p>
+<p><img src="/posts/af8e438c/p28_8.jpg" alt="p28_8"></p>
+<p>子串&quot;ABCDA&quot;：</p>
+<p><img src="/posts/af8e438c/p28_9.jpg" alt="p28_9"></p>
+<p>子串&quot;ABCDAB&quot;：</p>
+<p><img src="/posts/af8e438c/p28_10.jpg" alt="p28_10"></p>
+<p>子串&quot;ABCDABE&quot;：</p>
+<p><img src="/posts/af8e438c/p28_11.jpg" alt="p28_11"></p>
+<p>子串&quot;ABCDABEA&quot;：</p>
+<p><img src="/posts/af8e438c/p28_12.jpg" alt="p28_12"></p>
+<p>子串&quot;ABCDABEAB&quot;：</p>
+<p><img src="/posts/af8e438c/p28_13.jpg" alt="p28_13"></p>
+<p>这个例子描述了下面代码里生成dp数组的方法的逻辑，其中len代表了当前的最长公共前缀后缀的长度，其实就是表示了前len个字符，所以在遍历中计算每个子串的公共前缀后缀长度时，需要判断当前字符和前第len个字符的相等关系，如果相等，len可以递增，然后保存到dp中，如果不相同，就需要递减len到0或者直到找到相同的字符。</p>
+<h4 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">StrStr</span><span class="params">(<span class="keyword">const</span> <span class="built_in">std</span>::<span class="built_in">string</span>&amp; haystack, <span class="keyword">const</span> <span class="built_in">std</span>::<span class="built_in">string</span>&amp; needle)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (needle == <span class="string">&quot;&quot;</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="built_in">std</span>::<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; <span class="title">next</span><span class="params">(needle.size(), <span class="number">0</span>)</span></span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">this</span>-&gt;GenerateKmpNext(needle, next);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">size_t</span> j = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">size_t</span> i = <span class="number">0</span>; i &lt; haystack.size(); ++i)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span> (haystack[i] == needle[j])</span><br><span class="line">            &#123;</span><br><span class="line">                ++j;</span><br><span class="line">                <span class="keyword">if</span> (j == needle.size())</span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="keyword">return</span> i - j + <span class="number">1</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">if</span> (j &gt; <span class="number">0</span>)</span><br><span class="line">                &#123;</span><br><span class="line">                    i -= (next[j - <span class="number">1</span>] + <span class="number">1</span>);</span><br><span class="line">                &#125;</span><br><span class="line">                j = <span class="number">0</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">GenerateKmpNext</span><span class="params">(<span class="keyword">const</span> <span class="built_in">std</span>::<span class="built_in">string</span>&amp; needle, <span class="built_in">std</span>::<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; next)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> len = <span class="number">0</span>;</span><br><span class="line">        next[<span class="number">0</span>] = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">size_t</span> i = <span class="number">1</span>; i &lt; needle.size(); ++i)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">while</span> (len &gt; <span class="number">0</span> &amp;&amp; needle[len] != needle[i])</span><br><span class="line">            &#123;</span><br><span class="line">                len = next[len - <span class="number">1</span>];</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (needle[len] == needle[i])</span><br><span class="line">            &#123;</span><br><span class="line">                ++len;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            next[i] = len;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E7%AE%97%E6%B3%95/" rel="tag"># 算法</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/posts/fcd1e34.html" rel="prev" title="leetcode problem 27. 移除元素">
+      <i class="fa fa-chevron-left"></i> leetcode problem 27. 移除元素
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#leetcode-problem-28-%E5%AE%9E%E7%8E%B0-strStr"><span class="nav-number">1.</span> <span class="nav-text">leetcode problem 28. 实现 strStr()</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%93%BE%E6%8E%A5"><span class="nav-number">1.1.</span> <span class="nav-text">链接</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0"><span class="nav-number">1.2.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A7%A3%E6%B3%95"><span class="nav-number">1.3.</span> <span class="nav-text">解法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1"><span class="nav-number">1.3.1.</span> <span class="nav-text">1.</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81"><span class="nav-number">1.3.1.1.</span> <span class="nav-text">代码</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2"><span class="nav-number">1.3.2.</span> <span class="nav-text">2.</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81-1"><span class="nav-number">1.3.2.1.</span> <span class="nav-text">代码</span></a></li></ol></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">ciao</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">28</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">ciao</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
