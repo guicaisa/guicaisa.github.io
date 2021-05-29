@@ -160,6 +160,92 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://guicaisa.github.io/posts/95bb74d6.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="ciao">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ciao">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/posts/95bb74d6.html" class="post-title-link" itemprop="url">leetcode problem 34. 在排序数组中查找元素的第一个和最后一个位置</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2021-05-29 12:09:40 / 修改时间：12:50:48" itemprop="dateCreated datePublished" datetime="2021-05-29T12:09:40+08:00">2021-05-29</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/leetcode/" itemprop="url" rel="index"><span itemprop="name">leetcode</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/leetcode/leetcode-0001-0050/" itemprop="url" rel="index"><span itemprop="name">leetcode 0001-0050</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="leetcode-problem-34-在排序数组中查找元素的第一个和最后一个位置"><a href="#leetcode-problem-34-在排序数组中查找元素的第一个和最后一个位置" class="headerlink" title="leetcode problem 34. 在排序数组中查找元素的第一个和最后一个位置"></a><center>leetcode problem 34. 在排序数组中查找元素的第一个和最后一个位置</center></h1><h2 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h2><p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/find-first-and-last-position-of-element-in-sorted-array/">https://leetcode-cn.com/problems/find-first-and-last-position-of-element-in-sorted-array/</a></p>
+<h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>给定一个按照升序排列的整数数组 nums，和一个目标值 target。找出给定目标值在数组中的开始位置和结束位置。</p>
+<p>如果数组中不存在目标值 target，返回 [-1, -1]。</p>
+<p>进阶：</p>
+<p>你可以设计并实现时间复杂度为 O(log n) 的算法解决此问题吗？</p>
+<p>示例 1：</p>
+<p>输入：nums = [5,7,7,8,8,10], target = 8<br>输出：[3,4]<br>示例 2：</p>
+<p>输入：nums = [5,7,7,8,8,10], target = 6<br>输出：[-1,-1]<br>示例 3：</p>
+<p>输入：nums = [], target = 0<br>输出：[-1,-1]</p>
+<p>提示：</p>
+<p>0 &lt;= nums.length &lt;= 105<br>-109 &lt;= nums[i] &lt;= 109<br>nums 是一个非递减数组<br>-109 &lt;= target &lt;= 109</p>
+<h2 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h2><h3 id="1"><a href="#1" class="headerlink" title="1."></a>1.</h3><p>使用二分查找，在找到目标值的情况下，以该索引为基础，向左右延申，继续在左右两段上做二分查找，寻找目标值。在左边的那段中，找到目标值之后，继续以该索引为右边界，继续向左查找目标值，右边的那段中，持续向右进行查找，直到无法再找到目标值为止，结束查找，最后得到目标值的左右边界，返回结果。</p>
+<p><img src="/posts/95bb74d6/p34_1.jpg" alt="p34_1"></p>
+<h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="built_in">std</span>::<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; <span class="title">SearchRange</span><span class="params">(<span class="keyword">const</span> <span class="built_in">std</span>::<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums, <span class="keyword">const</span> <span class="keyword">int</span> target)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> first = FindTarget(nums, target, <span class="number">0</span>, nums.size() - <span class="number">1</span>);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (first == <span class="number">-1</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="built_in">std</span>::<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;(<span class="number">2</span>, <span class="number">-1</span>);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span> left_end = first;</span><br><span class="line">        <span class="keyword">int</span> right_end = first;</span><br><span class="line">        <span class="keyword">int</span> left = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> right = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> mid = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">        left = <span class="number">0</span>;</span><br><span class="line">        right = first - <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> (<span class="number">1</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            mid = FindTarget(nums, target, left, right);</span><br><span class="line">            <span class="keyword">if</span> (mid != <span class="number">-1</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                right = mid - <span class="number">1</span>;</span><br><span class="line">                left_end = mid;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        left = first + <span class="number">1</span>;</span><br><span class="line">        right = nums.size() - <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> (<span class="number">1</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            mid = FindTarget(nums, target, left, right);</span><br><span class="line">            <span class="keyword">if</span> (mid != <span class="number">-1</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                left = mid + <span class="number">1</span>;</span><br><span class="line">                right_end = mid;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">std</span>::<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&#123;left_end, right_end&#125;;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">FindTarget</span><span class="params">(<span class="keyword">const</span> <span class="built_in">std</span>::<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums, <span class="keyword">const</span> <span class="keyword">int</span> target, <span class="keyword">int</span> left, <span class="keyword">int</span> right)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> mid = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> (left &lt;= right)</span><br><span class="line">        &#123;</span><br><span class="line">            mid = (left + right) / <span class="number">2</span>;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (nums[mid] &gt; target)</span><br><span class="line">            &#123;</span><br><span class="line">                right = mid - <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (nums[mid] &lt; target)</span><br><span class="line">            &#123;</span><br><span class="line">                left = mid + <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">return</span> mid;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://guicaisa.github.io/posts/e87120b4.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -283,7 +369,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-05-24 00:14:54" itemprop="dateModified" datetime="2021-05-24T00:14:54+08:00">2021-05-24</time>
+                <time title="修改时间：2021-05-29 12:43:40" itemprop="dateModified" datetime="2021-05-29T12:43:40+08:00">2021-05-29</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -318,8 +404,8 @@
 <p>输入：s = &quot;&quot;<br>输出：0</p>
 <p>提示：</p>
 <p>0 &lt;= s.length &lt;= 3 * 104<br>s[i] 为 &#39;(&#39; 或 &#39;)&#39;</p>
-<h2 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h2><h3 id="1"><a href="#1" class="headerlink" title="1."></a>1.</h3><p>使用动态规划的方法。使用一个dp数组，其中dp[i]代表s[0…i]的字符串中最长的有效括号的长度，但是这个dp有个限制，就是如果在当前的s[0…i]中，以索引0…i-1中任意一个字符为起始，以索引i为结尾的字符，必须是有效的括号，才计算其的长度dp[i]，否则计为0，比如s[i]为&#39;(&#39;，那么s[0…i]中的任意的以索引i为结尾的字符串都不可能是有效括号，dp[i]为0，这是为了当遇到有效的括号可以延续长度的时候可以方便使用dp的既有结果来辅助计算。如果中间括号的有效性断掉的话，就得重新计算有效括号得字符串的长度。</p>
-<p>有了这个dp数组的定义，接下来我们需要分析一下状态转移的方式，根据括号的特性，有两种特性。</p>
+<h2 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h2><h3 id="1"><a href="#1" class="headerlink" title="1."></a>1.</h3><p>使用动态规划的方法。使用一个dp数组，其中dp[i]代表s[0…i]的字符串中最长的有效括号的长度，但是这个dp有个限制，就是如果在当前的s[0…i]中，以索引0…i-1中任意一个字符为起始，以索引i为结尾的字符，必须是有效的括号，才计算其的长度dp[i]，否则计为0，比如s[i]为&#39;(&#39;，那么s[0…i]中的任意的以索引i为结尾的字符串都不可能是有效括号，dp[i]为0，这是为了当遇到有效的括号可以延续长度的时候可以方便使用dp的既有结果来辅助计算。如果中间括号的有效性断掉的话，就得重新计算有效括号的字符串的长度。</p>
+<p>有了这个dp数组的定义，接下来我们需要分析一下状态转移的方式，根据括号的特性，有两种情况。</p>
 <p>1: 当s[i] == &#39;)&#39; 并且 s[i - 1] == &#39;(&#39;时，s[i-1…i]之间的有效括号长度为2，是一对有效的括号，此时判断s[0…i-2]之间的有效括号长度，即dp[i - 2]，在此基础上 +2，即得到公式dp[i] = dp[i - 2] + 2</p>
 <p><img src="/posts/790866c8/p32_1.jpg" alt="p32_1"></p>
 <p>2: 当s[i] == &#39;)&#39; 并且 s[i - 1] == &#39;)&#39;时，向前寻找对应的&#39;(&#39;和最后一个s[i]的&#39;)&#39;匹配，这种情况只能成立在前面的&#39;(&#39;与最后的&#39;)&#39;之间的子串是有效括号才行，所以根据s[i - 1]对应的dp[i - 1]得到的有效括号长度后，向前寻找这串子串之前的一个字符是否为&#39;(&#39;，即s[i - dp[i - 1] - 1] == &#39;(&#39;，如果成立，即s[i - dp[i - 1] - 1]到s[i]之间都是有效的括号，此时dp[i] = dp[i - 1] + 2，但是如果在s[i - dp[i - 1] - 1]之前，还有有效的括号字串的话，就需要再加上这部分的长度，即最终的dp[i] = dp[i - dp[i - 1] - 2] + dp[i - 1] + 2</p>
@@ -1012,94 +1098,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://guicaisa.github.io/posts/40ffa434.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="ciao">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Ciao">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/posts/40ffa434.html" class="post-title-link" itemprop="url">leetcode problem 24. 两两交换链表中的节点</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2021-04-18 14:40:28 / 修改时间：14:50:02" itemprop="dateCreated datePublished" datetime="2021-04-18T14:40:28+08:00">2021-04-18</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/leetcode/" itemprop="url" rel="index"><span itemprop="name">leetcode</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/leetcode/leetcode-0001-0050/" itemprop="url" rel="index"><span itemprop="name">leetcode 0001-0050</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="leetcode-problem-24-两两交换链表中的节点"><a href="#leetcode-problem-24-两两交换链表中的节点" class="headerlink" title="leetcode problem 24. 两两交换链表中的节点"></a><center>leetcode problem 24. 两两交换链表中的节点</center></h1><h2 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h2><p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/swap-nodes-in-pairs/">https://leetcode-cn.com/problems/swap-nodes-in-pairs/</a></p>
-<h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>给定一个链表，两两交换其中相邻的节点，并返回交换后的链表。</p>
-<p>你不能只是单纯的改变节点内部的值，而是需要实际的进行节点交换。</p>
-<p><img src="/posts/40ffa434/p24_1.jpg" alt="p24_1"></p>
-<p>示例 1：</p>
-<p>输入：head = [1,2,3,4]<br>输出：[2,1,4,3]<br>示例 2：</p>
-<p>输入：head = []<br>输出：[]<br>示例 3：</p>
-<p>输入：head = [1]<br>输出：[1]</p>
-<p>提示：</p>
-<p>链表中节点的数目在范围 [0, 100] 内<br>0 &lt;= Node.val &lt;= 100</p>
-<p>进阶：你能在不修改链表节点值的情况下解决这个问题吗?（也就是说，仅修改节点本身。）</p>
-<h2 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h2><h3 id="1"><a href="#1" class="headerlink" title="1."></a>1.</h3><p>遍历的方式，使用3个节点变量，分别保存2个连续的指针，以及之后的第三个指针，交换2个连续指针的顺序，将交换顺序之后的结果连接在结果链表之后，然后从第三个指针开始继续遍历，遍历的结束条件为剩余的节点个数小于2。</p>
-<h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">ListNode</span> </span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    ListNode(<span class="keyword">int</span> x) </span><br><span class="line">        : val(x), </span><br><span class="line">        next(<span class="literal">NULL</span>) </span><br><span class="line">    &#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> val;</span><br><span class="line">    ListNode* next;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">ListNode* <span class="title">SwapPairs</span><span class="params">(ListNode* head)</span> </span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (head == <span class="literal">NULL</span> || head-&gt;next == <span class="literal">NULL</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">return</span> head;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        ListNode* ret_head = <span class="literal">NULL</span>;</span><br><span class="line">        ListNode* cur_node = <span class="literal">NULL</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> (head &amp;&amp; head-&gt;next)</span><br><span class="line">        &#123;</span><br><span class="line">            ListNode* first = head;</span><br><span class="line">            ListNode* second = first-&gt;next;</span><br><span class="line">            ListNode* third = second-&gt;next;</span><br><span class="line"></span><br><span class="line">            first-&gt;next = <span class="literal">NULL</span>;</span><br><span class="line">            second-&gt;next = first;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (ret_head == <span class="literal">NULL</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                ret_head = second;</span><br><span class="line">                cur_node = second-&gt;next;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">            &#123;</span><br><span class="line">                cur_node-&gt;next = second;</span><br><span class="line">                cur_node = second-&gt;next;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            head = third;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (head)</span><br><span class="line">        &#123;</span><br><span class="line">            cur_node-&gt;next = head;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> ret_head;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<h3 id="2"><a href="#2" class="headerlink" title="2."></a>2.</h3><p>使用递归的方式，以2个节点为一组进行递归调用，将第二个节点的next节点作为头节点进行一次递归操作，交换2个节点的顺序，将返回的结果连接在交换顺序后的节点后面。</p>
-<h4 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">ListNode</span> </span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    ListNode(<span class="keyword">int</span> x) </span><br><span class="line">        : val(x), </span><br><span class="line">        next(<span class="literal">NULL</span>) </span><br><span class="line">    &#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> val;</span><br><span class="line">    ListNode* next;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">ListNode* <span class="title">SwapPairs</span><span class="params">(ListNode* head)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (head == <span class="literal">NULL</span> || head-&gt;next == <span class="literal">NULL</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">return</span> head;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        ListNode* next = head-&gt;next;</span><br><span class="line">        ListNode* next_two = head-&gt;next-&gt;next;</span><br><span class="line">        ListNode* ret = <span class="keyword">this</span>-&gt;SwapPairs(next_two);</span><br><span class="line">        head-&gt;next = ret;</span><br><span class="line">        next-&gt;next = head;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> next;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1169,7 +1167,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">33</span>
+          <span class="site-state-item-count">34</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
