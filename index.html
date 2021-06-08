@@ -160,6 +160,90 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://guicaisa.github.io/posts/6441ee2e.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="ciao">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ciao">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/posts/6441ee2e.html" class="post-title-link" itemprop="url">leetcode problem 37. 解数独</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2021-06-08 23:24:03 / 修改时间：23:34:26" itemprop="dateCreated datePublished" datetime="2021-06-08T23:24:03+08:00">2021-06-08</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/leetcode/" itemprop="url" rel="index"><span itemprop="name">leetcode</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/leetcode/leetcode-0001-0050/" itemprop="url" rel="index"><span itemprop="name">leetcode 0001-0050</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="leetcode-problem-37-解数独"><a href="#leetcode-problem-37-解数独" class="headerlink" title="leetcode problem 37. 解数独"></a><center>leetcode problem 37. 解数独</center></h1><h2 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h2><p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/sudoku-solver/">https://leetcode-cn.com/problems/sudoku-solver/</a></p>
+<h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>编写一个程序，通过填充空格来解决数独问题。</p>
+<p>数独的解法需 遵循如下规则：</p>
+<p>数字 1-9 在每一行只能出现一次。<br>数字 1-9 在每一列只能出现一次。<br>数字 1-9 在每一个以粗实线分隔的 3x3 宫内只能出现一次。（请参考示例图）<br>数独部分空格内已填入了数字，空白格用 &#39;.&#39; 表示。</p>
+<p>示例：</p>
+<p><img src="/posts/6441ee2e/p37_1.png" alt="p37_1"></p>
+<p>输入: board = [[&quot;5&quot;,&quot;3&quot;,&quot;.&quot;,&quot;.&quot;,&quot;7&quot;,&quot;.&quot;,&quot;.&quot;,&quot;.&quot;,&quot;.&quot;],[&quot;6&quot;,&quot;.&quot;,&quot;.&quot;,&quot;1&quot;,&quot;9&quot;,&quot;5&quot;,&quot;.&quot;,&quot;.&quot;,&quot;.&quot;],[&quot;.&quot;,&quot;9&quot;,&quot;8&quot;,&quot;.&quot;,&quot;.&quot;,&quot;.&quot;,&quot;.&quot;,&quot;6&quot;,&quot;.&quot;],[&quot;8&quot;,&quot;.&quot;,&quot;.&quot;,&quot;.&quot;,&quot;6&quot;,&quot;.&quot;,&quot;.&quot;,&quot;.&quot;,&quot;3&quot;],[&quot;4&quot;,&quot;.&quot;,&quot;.&quot;,&quot;8&quot;,&quot;.&quot;,&quot;3&quot;,&quot;.&quot;,&quot;.&quot;,&quot;1&quot;],[&quot;7&quot;,&quot;.&quot;,&quot;.&quot;,&quot;.&quot;,&quot;2&quot;,&quot;.&quot;,&quot;.&quot;,&quot;.&quot;,&quot;6&quot;],[&quot;.&quot;,&quot;6&quot;,&quot;.&quot;,&quot;.&quot;,&quot;.&quot;,&quot;.&quot;,&quot;2&quot;,&quot;8&quot;,&quot;.&quot;],[&quot;.&quot;,&quot;.&quot;,&quot;.&quot;,&quot;4&quot;,&quot;1&quot;,&quot;9&quot;,&quot;.&quot;,&quot;.&quot;,&quot;5&quot;],[&quot;.&quot;,&quot;.&quot;,&quot;.&quot;,&quot;.&quot;,&quot;8&quot;,&quot;.&quot;,&quot;.&quot;,&quot;7&quot;,&quot;9&quot;]]<br>输出: [[&quot;5&quot;,&quot;3&quot;,&quot;4&quot;,&quot;6&quot;,&quot;7&quot;,&quot;8&quot;,&quot;9&quot;,&quot;1&quot;,&quot;2&quot;],[&quot;6&quot;,&quot;7&quot;,&quot;2&quot;,&quot;1&quot;,&quot;9&quot;,&quot;5&quot;,&quot;3&quot;,&quot;4&quot;,&quot;8&quot;],[&quot;1&quot;,&quot;9&quot;,&quot;8&quot;,&quot;3&quot;,&quot;4&quot;,&quot;2&quot;,&quot;5&quot;,&quot;6&quot;,&quot;7&quot;],[&quot;8&quot;,&quot;5&quot;,&quot;9&quot;,&quot;7&quot;,&quot;6&quot;,&quot;1&quot;,&quot;4&quot;,&quot;2&quot;,&quot;3&quot;],[&quot;4&quot;,&quot;2&quot;,&quot;6&quot;,&quot;8&quot;,&quot;5&quot;,&quot;3&quot;,&quot;7&quot;,&quot;9&quot;,&quot;1&quot;],[&quot;7&quot;,&quot;1&quot;,&quot;3&quot;,&quot;9&quot;,&quot;2&quot;,&quot;4&quot;,&quot;8&quot;,&quot;5&quot;,&quot;6&quot;],[&quot;9&quot;,&quot;6&quot;,&quot;1&quot;,&quot;5&quot;,&quot;3&quot;,&quot;7&quot;,&quot;2&quot;,&quot;8&quot;,&quot;4&quot;],[&quot;2&quot;,&quot;8&quot;,&quot;7&quot;,&quot;4&quot;,&quot;1&quot;,&quot;9&quot;,&quot;6&quot;,&quot;3&quot;,&quot;5&quot;],[&quot;3&quot;,&quot;4&quot;,&quot;5&quot;,&quot;2&quot;,&quot;8&quot;,&quot;6&quot;,&quot;1&quot;,&quot;7&quot;,&quot;9&quot;]]<br>解释：输入的数独如上图所示，唯一有效的解决方案如下所示：</p>
+<p><img src="/posts/6441ee2e/p37_2.png" alt="p37_2"></p>
+<p>提示：</p>
+<p>board.length == 9<br>board[i].length == 9<br>board[i][j] 是一位数字或者 &#39;.&#39;<br>题目数据 保证 输入数独仅有一个解</p>
+<h2 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h2><h3 id="1"><a href="#1" class="headerlink" title="1."></a>1.</h3><p>事先将已经存在的值相关的行，列，九宫格的部分进行设置，然后先找到一个为&#39;.&#39;索引位置为开始，进行递归操作，遍历&#39;1&#39; - &#39;9&#39;，判断是否在同行，同列，同九宫格中存在该值，如果没有的话，将相关索引位置以及行，列，九宫格中的相关值进行设置，从下一个是&#39;.&#39;的位置开始继续上述的判断操作。如果向下展开的递归操作失败，说明当前这个节点的值选择的有问题，将当前选择的值的相关行，列，九宫格中的值重置，继续遍历&#39;1&#39; - &#39;9&#39;中剩下的可选值，直到向下展开的递归操作成功，返回结果。</p>
+<h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">SolveSudoku</span><span class="params">(<span class="built_in">std</span>::<span class="built_in">vector</span>&lt;<span class="built_in">std</span>::<span class="built_in">vector</span>&lt;<span class="keyword">char</span>&gt;&gt;&amp; board)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> vr[<span class="number">9</span>][<span class="number">9</span>] = &#123; <span class="number">0</span> &#125;;</span><br><span class="line">        <span class="keyword">int</span> vc[<span class="number">9</span>][<span class="number">9</span>] = &#123; <span class="number">0</span> &#125;;</span><br><span class="line">        <span class="keyword">int</span> vs[<span class="number">9</span>][<span class="number">9</span>] = &#123; <span class="number">0</span> &#125;;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span> x = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> y = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> first = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; board.size(); ++i)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; board[i].size(); ++j)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">if</span> (board[i][j] != <span class="string">&#x27;.&#x27;</span>)</span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="keyword">int</span> t = board[i][j] - <span class="string">&#x27;0&#x27;</span> - <span class="number">1</span>;</span><br><span class="line">                    <span class="keyword">int</span> n = (i / <span class="number">3</span> * <span class="number">3</span>) + (j / <span class="number">3</span>);</span><br><span class="line"></span><br><span class="line">                    vr[i][t] = vc[j][t] = vs[n][t] = <span class="number">1</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">else</span></span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="keyword">if</span> (first == <span class="number">0</span>)</span><br><span class="line">                    &#123;</span><br><span class="line">                        first = <span class="number">1</span>;</span><br><span class="line">                        x = i;</span><br><span class="line">                        y = j;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        Recursive(board, vr, vc, vs, x, y);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">Recursive</span><span class="params">(<span class="built_in">std</span>::<span class="built_in">vector</span>&lt;<span class="built_in">std</span>::<span class="built_in">vector</span>&lt;<span class="keyword">char</span>&gt; &gt;&amp; board, <span class="keyword">int</span>(*vr)[<span class="number">9</span>], <span class="keyword">int</span>(*vc)[<span class="number">9</span>], <span class="keyword">int</span>(*vs)[<span class="number">9</span>], <span class="keyword">int</span> x, <span class="keyword">int</span> y)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> n = (x / <span class="number">3</span> * <span class="number">3</span>) + (y / <span class="number">3</span>);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">char</span> i = <span class="string">&#x27;1&#x27;</span>; i &lt;= <span class="string">&#x27;9&#x27;</span>; ++i)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">int</span> t = i - <span class="string">&#x27;0&#x27;</span> - <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">if</span> (vr[x][t] == <span class="number">0</span> &amp;&amp; vc[y][t] == <span class="number">0</span> &amp;&amp; vs[n][t] == <span class="number">0</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                vr[x][t] = vc[y][t] = vs[n][t] = <span class="number">1</span>;</span><br><span class="line">                board[x][y] = i;</span><br><span class="line"></span><br><span class="line">                <span class="keyword">int</span> n_x = <span class="number">0</span>;</span><br><span class="line">                <span class="keyword">int</span> n_y = <span class="number">0</span>;</span><br><span class="line">                <span class="keyword">int</span> first = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">int</span> i = y == <span class="number">8</span> ? x + <span class="number">1</span> : x; i &lt; board.size(); ++i)</span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="keyword">for</span> (<span class="keyword">int</span> j = i == x ? y + <span class="number">1</span> : <span class="number">0</span>; j &lt; board[i].size(); ++j)</span><br><span class="line">                    &#123;</span><br><span class="line">                        <span class="keyword">if</span> (board[i][j] == <span class="string">&#x27;.&#x27;</span>)</span><br><span class="line">                        &#123;</span><br><span class="line">                            first = <span class="number">1</span>;</span><br><span class="line">                            n_x = i;</span><br><span class="line">                            n_y = j;</span><br><span class="line">                            <span class="keyword">break</span>;</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line"></span><br><span class="line">                    <span class="keyword">if</span> (first == <span class="number">1</span>)</span><br><span class="line">                    &#123;</span><br><span class="line">                        <span class="keyword">break</span>;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">                <span class="keyword">if</span> (n_x == <span class="number">0</span> &amp;&amp; n_y == <span class="number">0</span>)</span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">                <span class="keyword">bool</span> flag = Recursive(board, vr, vc, vs, n_x, n_y);</span><br><span class="line"></span><br><span class="line">                <span class="keyword">if</span> (flag)</span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">                vr[x][t] = vc[y][t] = vs[n][t] = <span class="number">0</span>;</span><br><span class="line">                board[x][y] = <span class="string">&#x27;.&#x27;</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://guicaisa.github.io/posts/404cee60.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -987,101 +1071,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://guicaisa.github.io/posts/fcd1e34.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="ciao">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Ciao">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/posts/fcd1e34.html" class="post-title-link" itemprop="url">leetcode problem 27. 移除元素</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2021-05-01 16:20:19 / 修改时间：16:47:30" itemprop="dateCreated datePublished" datetime="2021-05-01T16:20:19+08:00">2021-05-01</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/leetcode/" itemprop="url" rel="index"><span itemprop="name">leetcode</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/leetcode/leetcode-0001-0050/" itemprop="url" rel="index"><span itemprop="name">leetcode 0001-0050</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="leetcode-problem-27-移除元素"><a href="#leetcode-problem-27-移除元素" class="headerlink" title="leetcode problem 27. 移除元素"></a><center>leetcode problem 27. 移除元素</center></h1><h2 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h2><p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/remove-element/">https://leetcode-cn.com/problems/remove-element/</a></p>
-<h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>给你一个数组 nums 和一个值 val，你需要 原地 移除所有数值等于 val 的元素，并返回移除后数组的新长度。</p>
-<p>不要使用额外的数组空间，你必须仅使用 O(1) 额外空间并 原地 修改输入数组。</p>
-<p>元素的顺序可以改变。你不需要考虑数组中超出新长度后面的元素。</p>
-<p>说明:</p>
-<p>为什么返回数值是整数，但输出的答案是数组呢?</p>
-<p>请注意，输入数组是以「引用」方式传递的，这意味着在函数里修改输入数组对于调用者是可见的。</p>
-<p>你可以想象内部操作如下:</p>
-<p>// nums 是以“引用”方式传递的。也就是说，不对实参作任何拷贝<br>int len = removeElement(nums, val);</p>
-<p>// 在函数里修改输入数组对于调用者是可见的。<br>// 根据你的函数返回的长度, 它会打印出数组中 该长度范围内 的所有元素。<br>for (int i = 0; i &lt; len; i++) {<br>    print(nums[i]);<br>}</p>
-<p>示例 1：</p>
-<p>输入：nums = [3,2,2,3], val = 3<br>输出：2, nums = [2,2]<br>解释：函数应该返回新的长度 2, 并且 nums 中的前两个元素均为 2。你不需要考虑数组中超出新长度后面的元素。例如，函数返回的新长度为 2 ，而 nums = [2,2,3,3] 或 nums = [2,2,0,0]，也会被视作正确答案。<br>示例 2：</p>
-<p>输入：nums = [0,1,2,2,3,0,4,2], val = 2<br>输出：5, nums = [0,1,4,0,3]<br>解释：函数应该返回新的长度 5, 并且 nums 中的前五个元素为 0, 1, 3, 0, 4。注意这五个元素可为任意顺序。你不需要考虑数组中超出新长度后面的元素。</p>
-<p>提示：</p>
-<p>0 &lt;= nums.length &lt;= 100<br>0 &lt;= nums[i] &lt;= 50<br>0 &lt;= val &lt;= 100</p>
-<h2 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h2><h3 id="1"><a href="#1" class="headerlink" title="1."></a>1.</h3><p>使用双指针的方法，固定一个指针索引不动，用另一个索引去遍历数组，判断是否与目标值相同，不相同才将值更新到第一个指针索引的位置，否则略过，与</p>
-<p><a href="https://guicaisa.github.io/posts/c2bb7b8b.html">删除有序数组中的重复项</a>类似。</p>
-<h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">RemoveElement</span><span class="params">(<span class="built_in">std</span>::<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums, <span class="keyword">int</span> val)</span> </span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">        <span class="keyword">int</span> i = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; nums.size(); ++j)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span> (nums[j] != val)</span><br><span class="line">            &#123;</span><br><span class="line">                nums[i] = nums[j];</span><br><span class="line">                ++i;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> i;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h3 id="2"><a href="#2" class="headerlink" title="2."></a>2.</h3><p>另一种双指针的方法，第一个指针从头遍历，第二个指针先定位在数组的末尾处，遇到与目标值相同的数字第一个指针不动，与第二个指针的元素互换位置，第二个指针向左移动，遇到与目标值不同的数字第一个指针继续向右移动，第二个指针不动，实际上就是将与目标值相同的数字全部移动到数组的末尾处，题目中没有要求数组需要排序，所以置换的结果的顺序并不重要。</p>
-<img src="/posts/fcd1e34/p27_1.jpg" alt="p27_1" style="zoom:50%;">
-
-<h4 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line"><span class="keyword">public</span>:	</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">RemoveElement</span><span class="params">(<span class="built_in">std</span>::<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums, <span class="keyword">int</span> val)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (nums.size() == <span class="number">0</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span> i = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> j = nums.size() - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span> (; i &lt; nums.size() &amp;&amp; j &gt;= i; )</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span> (nums[i] == val)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">int</span> temp = nums[j];</span><br><span class="line">                nums[j] = nums[i];</span><br><span class="line">                nums[i] = temp;</span><br><span class="line">                --j;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">            &#123;</span><br><span class="line">                ++i;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> i;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1151,7 +1140,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">36</span>
+          <span class="site-state-item-count">37</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
