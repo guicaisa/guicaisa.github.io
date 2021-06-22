@@ -160,6 +160,97 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://guicaisa.github.io/posts/1fe60a11.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="ciao">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ciao">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/posts/1fe60a11.html" class="post-title-link" itemprop="url">leetcode problem 41. 缺失的第一个正数</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-06-22 23:52:20" itemprop="dateCreated datePublished" datetime="2021-06-22T23:52:20+08:00">2021-06-22</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-06-23 00:01:06" itemprop="dateModified" datetime="2021-06-23T00:01:06+08:00">2021-06-23</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/leetcode/" itemprop="url" rel="index"><span itemprop="name">leetcode</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/leetcode/leetcode-0001-0050/" itemprop="url" rel="index"><span itemprop="name">leetcode 0001-0050</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="leetcode-problem-41-缺失的第一个正数"><a href="#leetcode-problem-41-缺失的第一个正数" class="headerlink" title="leetcode problem 41. 缺失的第一个正数"></a><center>leetcode problem 41. 缺失的第一个正数</center></h1><h2 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h2><p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/first-missing-positive/">https://leetcode-cn.com/problems/first-missing-positive/</a></p>
+<h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>给你一个未排序的整数数组 nums ，请你找出其中没有出现的最小的正整数。</p>
+<p>请你实现时间复杂度为 O(n) 并且只使用常数级别额外空间的解决方案。</p>
+<p>示例 1：</p>
+<p>输入：nums = [1,2,0]<br>输出：3<br>示例 2：</p>
+<p>输入：nums = [3,4,-1,1]<br>输出：2<br>示例 3：</p>
+<p>输入：nums = [7,8,9,11,12]<br>输出：1</p>
+<p>提示：</p>
+<p>1 &lt;= nums.length &lt;= 5 * 105<br>-231 &lt;= nums[i] &lt;= 231 - 1</p>
+<h2 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h2><h3 id="1"><a href="#1" class="headerlink" title="1."></a>1.</h3><p>有一个数组，假设长度为4，根据题意，在正常情况下，每个正数都出现的话，那么其中的元素应该是1，2，3，4，但是假如实际情况是1，5，3，4找出最小消失的正整数，即为2。这个数组在假设正常的情况下有一个特点，即nums[i] = i + 1，根据这样的公式，使用数组本身作为存储介质，在遍历过程中根据公式将乱序的数组元素放到原来应该出现的位置上，如果3，4，-1，1，根据元素的值找到其对应的索引位置，如nums[0] = 3，值为3，其位置应该是nums[2]，对比nums[0]和nums[2]发现值并不相等，对调位置，将3放回到nums[2]的位置上，但是这个换位是有条件的，即nums[i]的值必须处于(0，nums.size()]的区间内，且如果2个位置上的值相同的话，就直接跳过，继续下次遍历。依此完成遍历，得到结果1，-1，3，4，发现缺少的最小正数为2。</p>
+<img src="/posts/1fe60a11/p41_1.jpg" alt="p41_1" style="zoom: 50%;">
+
+<h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">FirstMissingPositive</span><span class="params">(<span class="built_in">std</span>::<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums)</span> </span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.size(); ++i)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">while</span> (nums[i] &gt; <span class="number">0</span> &amp;&amp; nums[i] &lt;= nums.size() &amp;&amp; nums[nums[i] - <span class="number">1</span>] != nums[i])</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="built_in">std</span>::swap(nums[i], nums[nums[i] - <span class="number">1</span>]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.size(); ++i)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span> (nums[i] - <span class="number">1</span> != i)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">return</span> i + <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> nums.size() + <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://guicaisa.github.io/posts/c397e8d0.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -185,7 +276,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2021-06-17 23:04:37 / 修改时间：23:18:32" itemprop="dateCreated datePublished" datetime="2021-06-17T23:04:37+08:00">2021-06-17</time>
+              <time title="创建时间：2021-06-17 23:04:37 / 修改时间：23:19:07" itemprop="dateCreated datePublished" datetime="2021-06-17T23:04:37+08:00">2021-06-17</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -951,104 +1042,10 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://guicaisa.github.io/posts/9661bf26.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="ciao">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Ciao">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/posts/9661bf26.html" class="post-title-link" itemprop="url">leetcode problem 31. 下一个排列</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-05-20 22:59:41" itemprop="dateCreated datePublished" datetime="2021-05-20T22:59:41+08:00">2021-05-20</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-05-23 23:58:28" itemprop="dateModified" datetime="2021-05-23T23:58:28+08:00">2021-05-23</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/leetcode/" itemprop="url" rel="index"><span itemprop="name">leetcode</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/leetcode/leetcode-0001-0050/" itemprop="url" rel="index"><span itemprop="name">leetcode 0001-0050</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="leetcode-problem-31-下一个排列"><a href="#leetcode-problem-31-下一个排列" class="headerlink" title="leetcode problem 31. 下一个排列"></a><center>leetcode problem 31. 下一个排列</center></h1><h2 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h2><p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/next-permutation/">https://leetcode-cn.com/problems/next-permutation/</a></p>
-<h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>实现获取 下一个排列 的函数，算法需要将给定数字序列重新排列成字典序中下一个更大的排列。</p>
-<p>如果不存在下一个更大的排列，则将数字重新排列成最小的排列（即升序排列）。</p>
-<p>必须 原地 修改，只允许使用额外常数空间。</p>
-<p>示例 1：</p>
-<p>输入：nums = [1,2,3]<br>输出：[1,3,2]<br>示例 2：</p>
-<p>输入：nums = [3,2,1]<br>输出：[1,2,3]<br>示例 3：</p>
-<p>输入：nums = [1,1,5]<br>输出：[1,5,1]<br>示例 4：</p>
-<p>输入：nums = [1]<br>输出：[1]</p>
-<p>提示：</p>
-<p>1 &lt;= nums.length &lt;= 100<br>0 &lt;= nums[i] &lt;= 100</p>
-<h2 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h2><h3 id="1"><a href="#1" class="headerlink" title="1."></a>1.</h3><p>根据肉眼观察，寻找下一个数字的排列，需要从数组的右边开始寻找第一组是升序形式的2个数字，将其进行交换才能使得下一次的数字排列有可能是更大的，比如1，2，3，4，从右边开始找到的第一个升序排列的2个数字是3，4，交换3和4获得下一个数字排列1，2，4，3。</p>
-<p>如果是另一种复杂的情况，比如1，4，3，2，从右开始找到第一组升序排列的数字是1，4，这里是不能直接交换1和4的位置，因为4后面还有其他比4小的数字，如果是4，1，3，2的话明显结果是不对的，因为中间还有很多次大一点的排列没有列举出来。遇到这种情况，应该从尾遍历到1之前的所有数字，遇到第一个比1大的数字，就交换这个数字和1的位置上，保证了下一个数字排列的正确性，再将后续的3个数字的顺序倒置，保证后面3个数字的排列顺序是最小的原始的升序状态。</p>
-<h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">NextPermutation</span><span class="params">(<span class="built_in">std</span>::<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (nums.size() == <span class="number">0</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = nums.size() - <span class="number">2</span>; i &gt;= <span class="number">0</span>; --i)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span> (nums[i] &lt; nums[i + <span class="number">1</span>])</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">int</span> j = nums.size() - <span class="number">1</span>; j &gt; i; --j)</span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="keyword">if</span> (nums[j] &gt; nums[i])</span><br><span class="line">                    &#123;</span><br><span class="line">                        <span class="keyword">int</span> temp = nums[j];</span><br><span class="line">                        nums[j] = nums[i];</span><br><span class="line">                        nums[i] = temp;</span><br><span class="line">                        <span class="built_in">std</span>::reverse(nums.begin() + i + <span class="number">1</span>, nums.end());</span><br><span class="line">                        <span class="keyword">return</span>;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="built_in">std</span>::reverse(nums.begin(), nums.end());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-
-
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -1114,7 +1111,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">40</span>
+          <span class="site-state-item-count">41</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
